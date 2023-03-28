@@ -1,0 +1,2 @@
+class ExtracurricularsController < ApplicationController
+end
