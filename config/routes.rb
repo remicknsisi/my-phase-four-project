@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   # need to come back here and slim down on the routes I have that I wont use
-  get '/', to: 'students#index'
+  # get '/', to: 'students#index'
+  root 'students#index'
   resources :extracurriculars
   resources :reviews, only: [:index, :show]
   resources :teachers, only: [:index, :show]
