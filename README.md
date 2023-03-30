@@ -18,29 +18,7 @@ your project. Here's a list of some [awesome readmes][] for inspiration.
 
 [awesome readmes]: https://github.com/matiassingers/awesome-readme
 
-## Deploying
 
-This application has all the starter code needed to help you deploy your
-application to Render. It's recommended to deploy your project early and push up
-changes often to ensure that your code works equally well in production and
-development environments.
-
-The instructions in this section assume that you've already set up a Render
-account, created a PostgreSQL instance in your account, and set up your
-environment to deploy to Render. If you have not yet completed these steps, see
-the Environment Setup section below.
-
-### Create a Master Key File
-
-In the project files, delete the `config/credentials.yml.enc` file. Then, in the
-terminal, run the following:
-
-```sh
-$ EDITOR="code --wait" bin/rails credentials:edit
-```
-
-**Note**: if you use a different text editor than VS Code, you will need to replace
-`code` with the appropriate command.
 
 The command above will open a file in VS Code and wait for you to close it
 before completing the process of creating the credential files. Once you've done
