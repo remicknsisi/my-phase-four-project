@@ -2,17 +2,11 @@ import React from "react";
 import Student from './Student.js';
 import Teacher from './Teacher.js';
 
-function DisplayUsers ({ inStudents, students }) {
+function DisplayUsers ({ inStudents, students, teachers }) {
 
     return (
         <div>
             {inStudents ? 
-            <>
-                <div className="users-container">
-
-                </div>
-            </> 
-            :
             <>
                 <div className="users-container">
                     {students.map(student => {
@@ -21,9 +15,18 @@ function DisplayUsers ({ inStudents, students }) {
                         )
                     })}
                 </div>
+            </> 
+            :
+            <>
+                <div className="users-container">
+                    {teachers.map(teacher => {
+                        return (
+                            <Teacher key={teacher.id} teacher={teacher}/>
+                        )
+                    })}
+                </div>
             </>
             }
-            
         </div>
     )
 }
