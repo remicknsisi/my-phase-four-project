@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :show]
   resources :teachers, only: [:index, :show]
   resources :students, only: [:index, :show]
+
+  post "/login", to: "sessions#create"
   # root to: "main#index"
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

@@ -11,9 +11,6 @@ function TeacherDetails () {
         .then(teacherData => setTeacher(teacherData))
     }, []) 
 
-    // const email = teacher.name.replace(/ /g, '').toLowerCase() + '@hogwarts.edu'
-    // console.log(email)
-
     return (
         <div className="teacher-card-details">
             <h1>{teacher.name}</h1>
@@ -21,7 +18,7 @@ function TeacherDetails () {
             <br/>
             <img src={teacher.image}/>
             <h2>{teacher.house}</h2>
-            <h3>Classes being taught this Academic Term:</h3>
+            <h3>Classes taught this Academic Term:</h3>
                 {teacher.classes}
             <h3>Reviews</h3>
         </div>
