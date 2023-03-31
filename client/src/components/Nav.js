@@ -1,9 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
-function Nav() {
+function Nav({ onLogout, user }) {
+    console.log(user)
+    console.log(user.id)
 
-    function handleLogout({ onLogout }) {
+    function handleLogout() {
         fetch("/logout", {
           method: "DELETE",
         })
@@ -13,9 +15,9 @@ function Nav() {
   return (
     <div className="nav">
         <NavLink to="/" className="nav-link">Home</NavLink>
-        <NavLink to="/students" className="nav-link">Students</NavLink>
-        <NavLink to="/teachers" className="nav-link">Teachers</NavLink>
-        <button onClick={handleLogout}>Logout</button>
+        <NavLink to="/students" className="nav-link">Fellow Students</NavLink>
+        <NavLink to="/teachers" className="nav-link">Your Teachers</NavLink>
+        {(user.id) ? <button onClick={handleLogout}>Logout</button> : <Link to={`/login`}>Login Here</Link>}
     </div>
   );
 }

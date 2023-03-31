@@ -10,7 +10,15 @@ import Login from "./components/Login.js";
 function App() {
   const [students, setStudents] = useState([])
   const [teachers, setTeachers] = useState([])
-  const [user, setUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({})
+
+  useEffect(() => {
+    fetch("/me")
+    .then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setCurrentUser(user))
+      }})
+  }, [])
 
   useEffect(() => {
     fetch('http://localhost:3000/students')
@@ -25,12 +33,11 @@ function App() {
   }, [])
 
   function handleLogin(user){
-    console.log(user)
-    // handle setting user state here
+    setCurrentUser(user)
   }
 
   function handleLogout(){
-    // handle setting user state here
+    setCurrentUser({})
   }
 
   return (
@@ -38,8 +45,9 @@ function App() {
       <header className="App-header">
         <br></br>
         <div className="title">HOGWARTS.EDU</div>
-        <Nav onLogout={handleLogout}/>
+        <Nav onLogout={handleLogout} user={currentUser}/>
         <Routes>
+          {/* set up logic here that if there is a user in state, then reutnr the dynamic welcome home page. if not, return the login form */}
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
           <Route path="/students" element={<DisplayUsers students={students} inStudents={true}/>} />   
