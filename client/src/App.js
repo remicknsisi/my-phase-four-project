@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home.js"
 import Nav from "./components/Nav.js";
 import DisplayUsers from "./components/DisplayUsers.js";
+import TeacherDetails from "./components/TeacherDetails.js";
+import StudentDetails from "./components/StudentDetails.js";
 
 function App() {
   const [students, setStudents] = useState([])
@@ -29,7 +31,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/students" element={<DisplayUsers students={students} inStudents={true}/>} />   
-          <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} />    
+          <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
+          <Route path="/teachers/:id" element={<TeacherDetails/>} />   
+          <Route path="/students/:id" element={<StudentDetails/>} />   
         </Routes>
       </header>
     </div>
