@@ -19,15 +19,6 @@ your project. Here's a list of some [awesome readmes][] for inspiration.
 [awesome readmes]: https://github.com/matiassingers/awesome-readme
 
 
-
-The command above will open a file in VS Code and wait for you to close it
-before completing the process of creating the credential files. Once you've done
-that, you should see both the `credentials.yml.enc` and `master.key` files in
-the `config` folder. You will need the value in the `master.key` file to set up
-the web service in Render.
-
-Commit your changes and push them to GitHub.
-
 ### Create the App Database
 
 Render allows users to create [multiple databases within a single PostgreSQL
@@ -55,35 +46,9 @@ Run the `\q` command to exit PSQL.
 
 ### Create the Render Web Service
 
-To deploy, click the "New +" button in Render and select "Web Service". You'll
-see a list of all the repositories in your GitHub account. Find the repo you
-want to deploy and click the "Select" button.
 
-In the page that opens, enter a name for your app and make sure the Environment
-is set to Ruby.
 
-Scroll down and set the Build Command to `./bin/render-build.sh` and the Start
-Command to `bundle exec puma -C config/puma.rb`.
 
-Open a separate tab in your browser, navigate to the Render dashboard, and click
-on your PostgreSQL instance. Scroll down to the "Connection" section, find the
-"Internal Database URL", and copy it.
-
-Return to the other tab. Scroll down and click the "Advanced" button, then click
-"Add Environment Variable." Enter `DATABASE_URL` as the key, then paste in the
-URL you just copied. Note that the URL will end with the name you gave your
-PostgreSQL instance when you initially created it; be sure to remove that name
-and replace it with the name of the database you created in the last section.
-
-Click "Add Environment Variable" again. Add `RAILS_MASTER_KEY` as the key, and
-paste the value in the `config/master.key` file you created earlier.
-
-The completed page should look like this:
-
-![Web service settings](https://curriculum-content.s3.amazonaws.com/phase-4/project-template/web-service-settings.png)
-
-Scroll down to the bottom of the page and click "Create Web Service". The deploy
-process will begin automatically.
 
 ## Environment Setup
 
@@ -263,7 +228,8 @@ troubleshoot:
 
 [postgres downloads page]: https://postgresapp.com/downloads.html
 
-## Resources
 
-- [Getting Started with Ruby on Rails on Render](https://render.com/docs/deploy-rails)
-- [Render Databases Guide](https://render.com/docs/databases)
+all image-
+https://fantasytopics.com/harry-potter-characters-list/
+
+inspo - hogwarts legacy
