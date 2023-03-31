@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :students, only: [:index, :show]
 
   post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  get "/me", to: "student#show"
   # root to: "main#index"
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
