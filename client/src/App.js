@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { useNavigate, Route, Routes } from "react-router-dom";
 import Home from "./components/Home.js"
 import Nav from "./components/Nav.js";
 import DisplayUsers from "./components/DisplayUsers.js";
@@ -11,6 +11,8 @@ function App() {
   const [students, setStudents] = useState([])
   const [teachers, setTeachers] = useState([])
   const [currentUser, setCurrentUser] = useState({})
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("/me")
@@ -34,6 +36,7 @@ function App() {
 
   function handleLogin(user){
     setCurrentUser(user)
+    navigate('/')
   }
 
   function handleLogout(){
@@ -47,8 +50,7 @@ function App() {
         <div className="title">HOGWARTS.EDU</div>
         <Nav onLogout={handleLogout} user={currentUser}/>
         <Routes>
-          {/* set up logic here that if there is a user in state, then reutnr the dynamic welcome home page. if not, return the login form */}
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home user={currentUser}/>}/>
           <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
           <Route path="/students" element={<DisplayUsers students={students} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 

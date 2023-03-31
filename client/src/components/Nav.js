@@ -2,8 +2,6 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
 function Nav({ onLogout, user }) {
-    console.log(user)
-    console.log(user.id)
 
     function handleLogout() {
         fetch("/logout", {
