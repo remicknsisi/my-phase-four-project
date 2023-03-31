@@ -3,7 +3,7 @@ import React from "react";
 function Home () {
     return (
         <div className="home">
-            <h1>HOGWARTS.EDU</h1>
+            <h1>Welcome to Hogwarts Home</h1>
         </div>
     )
 }
