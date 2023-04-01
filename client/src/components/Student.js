@@ -5,10 +5,10 @@ function Student ({ student }) {
     const { house, id, image, name, reviews, spells, year } = student
 
     return (
-        <div className="student-card">
+        <div className="card">
             <h1>{name}</h1>
             <h2>House: {house} | Year: {year}</h2>
-            <img src={image}></img>
+            <img className="user-image" src={image}></img>
             <br/>
             <Link to={`/students/${id}`}>Read More</Link>
         </div>

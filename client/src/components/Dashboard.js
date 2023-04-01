@@ -13,7 +13,7 @@ function Dashboard ({ user }) {
 
     return (
         <div className="home">
-            {user.id ? <h1>Welcome to Hogwarts, {user.name}</h1> : <p>Please sign in</p>}
+            {user.id ? <h1>Welcome to Hogwarts, {user.name}</h1> : null}
             <img src={user.image}/>
             <div className='dashboard-container'>
                 <button className="dashboard-tiles" onClick={handleReviewsClick}>

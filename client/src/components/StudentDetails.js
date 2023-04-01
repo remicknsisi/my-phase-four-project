@@ -12,9 +12,9 @@ function StudentDetails () {
     }, []) 
 
     return (
-        <div className="student-card-details">
+        <div className="card-details">
             <h1>{student.name}</h1>
-            <img src={student.image}/>
+            <img className="user-image" src={student.image}/>
             <h2>{student.house}</h2>
         </div>
     )
