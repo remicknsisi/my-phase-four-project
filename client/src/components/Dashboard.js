@@ -5,12 +5,13 @@ function Dashboard ({ user }) {
     const navigate = useNavigate()
 
     function handleReviewsClick(){
-        navigate('/reviews')
+        navigate(`/students/${user.id}/reviews`)
     }
 
     return (
         <div className="home">
             {user.id ? <h1>Welcome to Hogwarts, {user.name}</h1> : <p>Please sign in</p>}
+            <img src={user.image}/>
             <div className='dashboard-container'>
                 <button className="dashboard-tiles" onClick={handleReviewsClick}>
                     My Reviews

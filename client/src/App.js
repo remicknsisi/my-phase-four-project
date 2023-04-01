@@ -45,8 +45,9 @@ function App() {
   }
 
   function handleDeleteReview(deletedReview){
-    // console.log(currentUser.reviews)
-    // figure this out so front end updates user state to remove the one review
+    const updatedReviews = currentUser.reviews.filter(review => review.id !== deletedReview.id)
+    const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}
+    setCurrentUser(userWithUpdatedReviews)
   }
 
   return (
@@ -62,7 +63,7 @@ function App() {
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
           <Route path="/teachers/:id" element={<TeacherDetails/>} />   
           <Route path="/students/:id" element={<StudentDetails/>} />   
-          <Route path="/reviews" element={<Reviews onDeleteReview={handleDeleteReview} user={currentUser}/>}/>
+          <Route path="/students/:id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} user={currentUser}/>}/>
         </Routes>
       </header>
     </div>
