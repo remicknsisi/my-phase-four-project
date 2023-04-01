@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get '/', to: 'students#index'
   # root 'students#index'
   resources :extracurriculars
-  resources :reviews, only: [:index, :show]
+  resources :reviews, only: [:index, :show, :destroy]
   resources :teachers, only: [:index, :show]
   resources :students, only: [:index, :show]
 

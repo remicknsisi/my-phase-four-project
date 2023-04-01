@@ -20,3 +20,15 @@
     margin:auto;
     padding-bottom: 10px;
   }
+
+  .dashboard-tiles {
+    size: 30px;
+    padding: 30px;
+    radius: 0px;
+  }
+
+  .dashboard-container {
+    display: grid;
+    padding: 10px;
+    grid-gap: 1rem;
+  }

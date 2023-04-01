@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    # skip_before_action :authorized, only: :create
     #for logging in
     def create
         student = Student.find_by(username: params[:username])

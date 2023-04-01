@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
-import Home from "./components/Home.js"
+import Dashboard from "./components/Dashboard.js"
 import Nav from "./components/Nav.js";
 import DisplayUsers from "./components/DisplayUsers.js";
 import TeacherDetails from "./components/TeacherDetails.js";
 import StudentDetails from "./components/StudentDetails.js";
 import Login from "./components/Login.js";
+import Reviews from "./components/Reviews.js";
 
 function App() {
   const [students, setStudents] = useState([])
@@ -13,14 +14,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState({})
 
   const navigate = useNavigate()
-
-  useEffect(() => {
-    fetch("/me")
-    .then((res) => {
-      if (res.ok) {
-        res.json().then((user) => setCurrentUser(user))
-      }})
-  }, [])
 
   useEffect(() => {
     fetch('http://localhost:3000/students')
@@ -34,6 +27,14 @@ function App() {
     .then(teacherData => setTeachers(teacherData))
   }, [])
 
+  useEffect(() => {
+    fetch("/me")
+    .then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setCurrentUser(user))
+      }})
+  }, [])
+
   function handleLogin(user){
     setCurrentUser(user)
     navigate('/')
@@ -43,6 +44,11 @@ function App() {
     setCurrentUser({})
   }
 
+  function handleDeleteReview(deletedReview){
+    // console.log(currentUser.reviews)
+    // figure this out so front end updates user state to remove the one review
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -50,12 +56,13 @@ function App() {
         <div className="title">HOGWARTS.EDU</div>
         <Nav onLogout={handleLogout} user={currentUser}/>
         <Routes>
-          <Route path="/" element={<Home user={currentUser}/>}/>
+          <Route path="/" element={<Dashboard user={currentUser}/>}/>
           <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
           <Route path="/students" element={<DisplayUsers students={students} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
           <Route path="/teachers/:id" element={<TeacherDetails/>} />   
           <Route path="/students/:id" element={<StudentDetails/>} />   
+          <Route path="/reviews" element={<Reviews onDeleteReview={handleDeleteReview} user={currentUser}/>}/>
         </Routes>
       </header>
     </div>
