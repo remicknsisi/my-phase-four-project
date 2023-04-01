@@ -7,6 +7,7 @@ import TeacherDetails from "./components/TeacherDetails.js";
 import StudentDetails from "./components/StudentDetails.js";
 import Login from "./components/Login.js";
 import Reviews from "./components/Reviews.js";
+import NewReviewForm from "./components/NewReviewForm.js";
 
 function App() {
   const [students, setStudents] = useState([])
@@ -63,7 +64,8 @@ function App() {
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
           <Route path="/teachers/:id" element={<TeacherDetails/>} />   
           <Route path="/students/:id" element={<StudentDetails/>} />   
-          <Route path="/students/:id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} user={currentUser}/>}/>
+          <Route path="/students/:student_id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} user={currentUser} teachers={teachers}/>}/>
+          <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers}/>}/>
         </Routes>
       </header>
     </div>

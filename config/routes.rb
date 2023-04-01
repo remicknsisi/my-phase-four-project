@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :teachers, only: [:index, :show]
   resources :students, only: [:index, :show]
 
+  post "/students/:student_id/reviews", to: "reviews#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "student#show"

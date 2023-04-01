@@ -7,6 +7,9 @@ function Dashboard ({ user }) {
     function handleReviewsClick(){
         navigate(`/students/${user.id}/reviews`)
     }
+    function handleRateClick(){
+        navigate(`/students/${user.id}/reviews/new`)
+    }
 
     return (
         <div className="home">
@@ -16,7 +19,7 @@ function Dashboard ({ user }) {
                 <button className="dashboard-tiles" onClick={handleReviewsClick}>
                     My Reviews
                 </button>
-                <button className="dashboard-tiles">
+                <button className="dashboard-tiles" onClick={handleRateClick}>
                     Rate My Professor
                 </button>
                 <button className="dashboard-tiles">
