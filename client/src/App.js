@@ -50,6 +50,11 @@ function App() {
     const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}
     setCurrentUser(userWithUpdatedReviews)
   }
+  function handleSubmitReview (updatedStudent, id){
+    const studentsWithUpdatedReviews = students.map(student => student.id === updatedStudent.id ? updatedStudent : student)
+    setStudents(studentsWithUpdatedReviews)
+    navigate(`/students/${updatedStudent.id}/reviews`)
+    }
 
   return (
     <div className="App">
@@ -62,10 +67,10 @@ function App() {
           <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
           <Route path="/students" element={<DisplayUsers students={students} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
-          <Route path="/teachers/:id" element={<TeacherDetails/>} />   
+          <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} />   
           <Route path="/students/:id" element={<StudentDetails/>} />   
           <Route path="/students/:student_id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} user={currentUser} teachers={teachers}/>}/>
-          <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers}/>}/>
+          <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students} onSubmit={handleSubmitReview}/>}/>
         </Routes>
       </header>
     </div>

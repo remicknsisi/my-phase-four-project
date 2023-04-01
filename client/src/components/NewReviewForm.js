@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-function NewReviewForm ({ teachers }) {
+function NewReviewForm ({ teachers, students, onSubmit }) {
 
     const [newComment, setNewComment] = useState('')
     const [newRating, setNewRating] = useState()
@@ -29,13 +29,12 @@ function NewReviewForm ({ teachers }) {
             )
           })
           .then(res => res.json())
-          .then(newReview => { console.log(newReview)
-            // const chef = chefs.find(chef => chef.id === newRecipe.chef_id)
-            // const chefUpdatedRecipes = [...chef.recipes, newRecipe]
-            // const updatedChef = {...chef, recipes: chefUpdatedRecipes}
-            // onSubmit(updatedChef, newRecipe.id)
-        }
-            )
+          .then(newReview => {
+            const student = students.find(student => student.id === newReview.student_id)
+            const studentUpdatedReviews = [...student.reviews, newReview]
+            const updatedStudent = {...student, reviews: studentUpdatedReviews}
+            onSubmit(updatedStudent, newReview.id)
+        })
     }
 
     return (
