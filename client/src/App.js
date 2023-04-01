@@ -13,6 +13,7 @@ function App() {
   const [students, setStudents] = useState([])
   const [teachers, setTeachers] = useState([])
   const [currentUser, setCurrentUser] = useState({})
+  const [selectedHouse, setSelectedHouse] = useState('All')
 
   const navigate = useNavigate()
 
@@ -56,16 +57,29 @@ function App() {
     navigate(`/students/${updatedStudent.id}/reviews`)
     }
 
+    const studentsToDisplay = students.filter(student => {
+      if (selectedHouse === "All") return true;
+      else if (selectedHouse === "Gryffindor") return student.house === 'Gryffindor';
+      else if (selectedHouse === "Ravenclaw") return student.house === 'Ravenclaw';
+      else if (selectedHouse === "Slytherin") return student.house === 'Slytherin';
+      else if (selectedHouse === "Hufflepuff") return student.house === 'Hufflepuff';
+      else return student.house === selectedHouse;
+    })
+
+  function handleNewSelection(house){
+    setSelectedHouse(house)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <br></br>
-        <div className="title">✨HOGWARTS.EDU✨</div>
+        <div className="title">✨ HOGWARTS.EDU ✨</div>
         <Nav onLogout={handleLogout} user={currentUser}/>
         <Routes>
           <Route path="/" element={<Dashboard user={currentUser}/>}/>
           <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
-          <Route path="/students" element={<DisplayUsers students={students} inStudents={true}/>} />   
+          <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
           <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} />   
           <Route path="/students/:id" element={<StudentDetails/>} />   

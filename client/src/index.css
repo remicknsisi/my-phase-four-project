@@ -42,7 +42,6 @@
   .dashboard-tiles {
     size: 30px;
     padding: 30px;
-    radius: 0px;
   }
 
   .dashboard-container {
@@ -85,4 +84,9 @@
 .user-image {
     height: 300px;
     width: 300px
+}
+
+.filter {
+    background-color: white;
+    text-align: center;
 }
