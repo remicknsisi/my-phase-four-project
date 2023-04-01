@@ -60,7 +60,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <br></br>
-        <div className="title">HOGWARTS.EDU</div>
+        <div className="title">✨HOGWARTS.EDU✨</div>
         <Nav onLogout={handleLogout} user={currentUser}/>
         <Routes>
           <Route path="/" element={<Dashboard user={currentUser}/>}/>

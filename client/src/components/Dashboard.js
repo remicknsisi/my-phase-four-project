@@ -28,6 +28,9 @@ function Dashboard ({ user }) {
                 <button className="dashboard-tiles">
                     My Classes
                 </button>
+                <button className="dashboard-tiles">
+                    My Extracurriculars
+                </button>
             </div>
         </div>
     )
