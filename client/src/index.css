@@ -90,3 +90,21 @@
     background-color: white;
     text-align: center;
 }
+
+.login-form {
+    text-align: left;
+    background-color: #EAE6FF;
+    padding:25px;
+    width: 300px;
+    font-size:xx-large;
+    margin:auto
+}
+
+.login-container {
+    padding: 100px
+}
+
+.login-input {
+    margin-left: 5px;
+    padding: 5px
+}
