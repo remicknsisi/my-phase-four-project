@@ -235,3 +235,6 @@ https://fantasytopics.com/harry-potter-characters-list/
 inspo - hogwarts legacy
 
 https://pngtree.com/freebackground/mysterious-starry-sky-background_1337171.html - background image of stars
+
+info about extracurriculars - 
+https://harrypotter.fandom.com/wiki/Quidditch?so=search
