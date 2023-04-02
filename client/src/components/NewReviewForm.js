@@ -38,17 +38,17 @@ function NewReviewForm ({ teachers, students, onSubmit }) {
     }
 
     return (
-        <div className="review-form">
-            <label>Leave a Review: </label>
-            <form onSubmit={handleSubmitReview}>
-            Select Teacher: <select type="number" value={newTeacher} onChange={e => setNewTeacher(e.target.value)}>
+        <div className="review-container">
+            <label>Rate My Professor: </label>
+            <form className="review-form" onSubmit={handleSubmitReview}>
+            Select Teacher: <select className="review-input" type="number" value={newTeacher} onChange={e => setNewTeacher(e.target.value)}>
                     {teacherOptions}
                 </select>
                 <br/>
-            Leave a Comment: <input type="text" placeholder="E.g. This professor is the best!" value={newComment} onChange={e => setNewComment(e.target.value)}>
+            Leave a Comment: <input className="review-input" type="text" placeholder="E.g. This professor is the best!" value={newComment} onChange={e => setNewComment(e.target.value)}>
                 </input>
                 <br/>
-            Choose a Rating: <input type="number" placeholder="Rate 1-5 Stars" value={newRating} onChange={e => setNewRating(e.target.value)}>
+            Choose a Rating: <input className="review-input" type="number" placeholder="Rate 1-5 Stars" value={newRating} onChange={e => setNewRating(e.target.value)}>
                 </input>
                 <br/>
                 <button>Submit</button>
