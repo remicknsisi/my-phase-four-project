@@ -8,11 +8,15 @@ import StudentDetails from "./components/StudentDetails.js";
 import Login from "./components/Login.js";
 import Reviews from "./components/Reviews.js";
 import NewReviewForm from "./components/NewReviewForm.js";
+import DisplayExtracurriculars from "./components/DisplayExtracurriculars.js";
+import Extracurricular from "./components/Extracurricular.js";
 
 function App() {
   const [students, setStudents] = useState([])
   const [teachers, setTeachers] = useState([])
+  const [extracurriculars, setExtracurriculars] = useState([])
   const [currentUser, setCurrentUser] = useState({})
+  // useContext instead of currentUser in State?
   const [selectedHouse, setSelectedHouse] = useState('All')
 
   const navigate = useNavigate()
@@ -27,6 +31,12 @@ function App() {
     fetch('http://localhost:3000/teachers')
     .then(res => res.json())
     .then(teacherData => setTeachers(teacherData))
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/extracurriculars')
+    .then(res => res.json())
+    .then(extracurricularData => setExtracurriculars(extracurricularData))
   }, [])
 
   useEffect(() => {
@@ -81,6 +91,7 @@ function App() {
           <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
           <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
+          <Route parth="/extracurriculars" element={<DisplayExtracurriculars extracurriculars={extracurriculars}/>}/>
           <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} />   
           <Route path="/students/:id" element={<StudentDetails/>} />   
           <Route path="/students/:student_id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} user={currentUser} teachers={teachers}/>}/>

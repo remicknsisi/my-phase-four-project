@@ -51,6 +51,7 @@ function Login({ onLogin }) {
         />
         <br/>
         <button type="submit">Login</button>
+        <p>Don't have an account? Sign up</p>
       </form>
     </div>
     );

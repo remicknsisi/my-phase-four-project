@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # need to come back here and slim down on the routes I have that I wont use
   # get '/', to: 'students#index'
   # root 'students#index'
-  resources :extracurriculars
+  resources :extracurriculars, only: [:index]
   resources :reviews, only: [:index, :show, :destroy]
   resources :teachers, only: [:index, :show]
   resources :students, only: [:index, :show]

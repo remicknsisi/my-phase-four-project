@@ -15,6 +15,7 @@ function Nav({ onLogout, user }) {
         <NavLink to="/" className="nav-link">Dashboard</NavLink>
         <NavLink to="/students" className="nav-link">Fellow Students</NavLink>
         <NavLink to="/teachers" className="nav-link">Your Teachers</NavLink>
+        <NavLink to="/extracurriculars" className="nav-link">Extracurriculars</NavLink>
         {(user.id) ? <button onClick={handleLogout}>Logout</button> : <NavLink to={`/login`} className="nav-link">Login</NavLink>}
     </div>
   );
