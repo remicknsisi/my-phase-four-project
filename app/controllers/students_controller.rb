@@ -6,15 +6,26 @@ class StudentsController < ApplicationController
         render json: students, include: :reviews
     end
 
+    # persists login
     def show
-        student = Student.find(params[:id])
-        render json: student, include: :reviews
-        # student = Student.find_by(id: session[:user_id])
-        # if student
-        #     render json: student, include: :reviews
-        # else
-        #     render json: { error: "Not authorized" }, status: :unauthorized
-        # end
+        student = Student.find_by(id: session[:user_id])
+        if student
+            render json: student, include: :reviews
+        else 
+            render json: { error: "Not authorized" }, status: :unauthorized
+        end
+    end
+
+    # signup
+    def create
+        student = Student.create(student_params)
+        if student.valid?
+            # moment the user is logged in
+            session[:user_id] = student.id
+            render json: student
+        else
+            render json: { errors: student.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     private
@@ -23,7 +34,7 @@ class StudentsController < ApplicationController
         render json: { errors: "Cannot find student with this ID" }, status: :not_found
     end
 
-    # def student_params
-    #     params.permit(:username, :password)
-    # end
+    def student_params
+        params.permit(:username, :password, :password_confirmation)
+    end
 end

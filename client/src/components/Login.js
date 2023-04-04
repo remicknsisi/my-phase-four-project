@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { StudentContext } from "../context/StudentProvider.js";
 
-function Login({ onLogin }) {
+function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([])
+    const [error, setError] = useState("")
+
+    const { login } = useContext(StudentContext)
   
     function handleSubmit(e) {
       e.preventDefault()
@@ -21,11 +24,11 @@ function Login({ onLogin }) {
       })
         .then(res => {
             if(res.ok){
-                res.json().then((user) => onLogin(user))
+                res.json().then((user) => login(user))
             } else {
                 res.json().then(
                     console.log('hi - error')
-                    // set errors to display
+                    // set error to display
                 )
             }
         })
@@ -44,7 +47,7 @@ function Login({ onLogin }) {
         <br/>
         Password: 
         <input
-          type="text"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className='login-input'

@@ -4,8 +4,6 @@ import Teacher from './Teacher.js';
 import Filter from "./Filter.js"
 
 function DisplayUsers ({ inStudents, students, teachers, selectedHouse, onNewSelection }) {
-    console.log(students, teachers)
-
     return (
         <div>
             {inStudents ? 

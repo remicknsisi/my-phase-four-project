@@ -1,24 +1,37 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Navigate, NavLink } from "react-router-dom";
+import { StudentContext } from "../context/StudentProvider.js";
 
-function Nav({ onLogout, user }) {
+function Nav() {
+    const { currentUser, logout } = useContext(StudentContext)
 
-    function handleLogout() {
-        fetch("/logout", {
-          method: "DELETE",
+    function handleLogout(){
+        fetch("/logout")
+        .then(() => {
+            logout()
+            Navigate('/login')
         })
-        .then(() => onLogout())
-      }
+    }
 
-  return (
-    <div className="nav">
-        <NavLink to="/" className="nav-link">Dashboard</NavLink>
-        <NavLink to="/students" className="nav-link">Fellow Students</NavLink>
-        <NavLink to="/teachers" className="nav-link">Your Teachers</NavLink>
-        <NavLink to="/extracurriculars" className="nav-link">Extracurriculars</NavLink>
-        {(user.id) ? <button onClick={handleLogout}>Logout</button> : <NavLink to={`/login`} className="nav-link">Login</NavLink>}
-    </div>
-  );
+  if (currentUser) {
+    return (
+        <div className="nav">
+            <NavLink to="/" className="nav-link">Dashboard</NavLink>
+            <NavLink to="/students" className="nav-link">Fellow Students</NavLink>
+            <NavLink to="/teachers" className="nav-link">Your Teachers</NavLink>
+            <NavLink to="/extracurriculars" className="nav-link">Extracurriculars</NavLink>
+            <button onClick={handleLogout}>Logout</button>
+        </div>
+        );
+    } else {
+        return (
+            <div>
+                <NavLink to="/login" className="nav-link">
+                    <button>Login</button>
+                </NavLink>
+            </div>
+        )
+    }
 }
 
 export default Nav;

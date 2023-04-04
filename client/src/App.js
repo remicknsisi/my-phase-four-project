@@ -10,56 +10,55 @@ import Reviews from "./components/Reviews.js";
 import NewReviewForm from "./components/NewReviewForm.js";
 import DisplayExtracurriculars from "./components/DisplayExtracurriculars.js";
 import Extracurricular from "./components/Extracurricular.js";
+import { StudentProvider } from "./context/StudentProvider.js"
+import Signup from "./components/Signup.js"
 
 function App() {
   const [students, setStudents] = useState([])
   const [teachers, setTeachers] = useState([])
   const [extracurriculars, setExtracurriculars] = useState([])
-  const [currentUser, setCurrentUser] = useState({})
-  // useContext instead of currentUser in State?
   const [selectedHouse, setSelectedHouse] = useState('All')
 
   const navigate = useNavigate()
 
   useEffect(() => {
     fetch('http://localhost:3000/students')
-    .then(res => res.json())
-    .then(studentData => setStudents(studentData))
+    .then(res => res.json()
+      // {
+      // console.log(res)
+      // if (res.ok) {
+      //   res.json()
+      //   .then(studentData => {
+      //     setStudents(studentData)})
+      // }}
+      )
+      .then(data => console.log(data))
   }, [])
 
   useEffect(() => {
     fetch('http://localhost:3000/teachers')
-    .then(res => res.json())
-    .then(teacherData => setTeachers(teacherData))
+    .then(res => {
+      if (res.ok) {
+        res.json()
+        .then(teacherData => {
+          setTeachers(teacherData)})
+      }})
   }, [])
-
+  
   useEffect(() => {
     fetch('http://localhost:3000/extracurriculars')
-    .then(res => res.json())
-    .then(extracurricularData => setExtracurriculars(extracurricularData))
-  }, [])
-
-  useEffect(() => {
-    fetch("/me")
-    .then((res) => {
+    .then(res => {
       if (res.ok) {
-        res.json().then((user) => setCurrentUser(user))
+        res.json()
+        .then(extracurricularData => {
+          setExtracurriculars(extracurricularData)})
       }})
   }, [])
 
-  function handleLogin(user){
-    setCurrentUser(user)
-    navigate('/')
-  }
-
-  function handleLogout(){
-    setCurrentUser({})
-  }
-
   function handleDeleteReview(deletedReview){
-    const updatedReviews = currentUser.reviews.filter(review => review.id !== deletedReview.id)
-    const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}
-    setCurrentUser(userWithUpdatedReviews)
+    // const updatedReviews = currentUser.reviews.filter(review => review.id !== deletedReview.id)
+    // const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}
+    // setCurrentUser(userWithUpdatedReviews)
   }
   function handleSubmitReview (updatedStudent, id){
     const studentsWithUpdatedReviews = students.map(student => student.id === updatedStudent.id ? updatedStudent : student)
@@ -82,22 +81,26 @@ function App() {
 
   return (
     <div className="App">
+      <StudentProvider>
       <header className="App-header">
         <br></br>
         <div className="title">✨ HOGWARTS.EDU ✨</div>
-        <Nav onLogout={handleLogout} user={currentUser}/>
+        <Nav/>
         <Routes>
-          <Route path="/" element={<Dashboard user={currentUser}/>}/>
-          <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
+          <Route path="/" element={<Dashboard/>}/>
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/login" element={<Login/>}/>
           <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
-          <Route parth="/extracurriculars" element={<DisplayExtracurriculars extracurriculars={extracurriculars}/>}/>
-          <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} />   
+          <Route path="/extracurriculars" element={<DisplayExtracurriculars extracurriculars={extracurriculars}/>}/>
+          <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} />  
+          {/* possibly consider removing logic to look at one user, as nancy suggests not to do so:  */}
           <Route path="/students/:id" element={<StudentDetails/>} />   
-          <Route path="/students/:student_id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} user={currentUser} teachers={teachers}/>}/>
+          <Route path="/students/:student_id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} teachers={teachers}/>}/>
           <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students} onSubmit={handleSubmitReview}/>}/>
         </Routes>
       </header>
+      </StudentProvider>
     </div>
   );
 }

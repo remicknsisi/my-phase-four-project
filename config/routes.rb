@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   post "/students/:student_id/reviews", to: "reviews#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  get "/me", to: "student#show"
+  get "/me", to: "students#show"
+  post "/signup", to: "student#create"
   # root to: "main#index"
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
