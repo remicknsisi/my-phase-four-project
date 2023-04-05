@@ -12,7 +12,7 @@ function Review ({ review, onDeleteReview, teachers }) {
           .then(deletedReview => onDeleteReview(deletedReview))}
 
     return (
-        <div className="reviews">
+        <div className="associated-card">
             <h3>Professor: {ratedTeacher.name} | Rating: {'✨'.repeat(rating)}</h3>
             <p>{comment}</p>
             <button onClick={handleDeleteReview}>Delete Review</button>

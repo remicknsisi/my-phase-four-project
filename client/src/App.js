@@ -5,7 +5,7 @@ import Nav from "./components/Nav.js";
 import DisplayUsers from "./components/DisplayUsers.js";
 import TeacherDetails from "./components/TeacherDetails.js";
 import Login from "./components/Login.js";
-import Reviews from "./components/Reviews.js";
+import DisplayReviews from "./components/DisplayReviews.js";
 import NewReviewForm from "./components/NewReviewForm.js";
 import DisplayExtracurriculars from "./components/DisplayExtracurriculars.js";
 import Extracurricular from "./components/Extracurricular.js";
@@ -88,9 +88,10 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
-          <Route path="/extracurriculars" element={<DisplayExtracurriculars extracurriculars={extracurriculars}/>}/>
-          <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} />  
-          <Route path="/students/:student_id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} teachers={teachers}/>}/>
+          {/* <Route path="/extracurriculars" element={<DisplayExtracurriculars extracurriculars={extracurriculars}/>}/> */}
+          <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} /> 
+          <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars/>}/>
+          <Route path="/students/:student_id/reviews" element={<DisplayReviews onDeleteReview={handleDeleteReview} teachers={teachers}/>}/>
           <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students} onSubmit={handleSubmitReview}/>}/>
         </Routes>
       </header>

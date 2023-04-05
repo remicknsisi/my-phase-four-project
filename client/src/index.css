@@ -132,7 +132,7 @@
     padding: 5px
 }
 
-.reviews {
+.associated-card {
     background-color: white;
     padding: 10px;
     text-align: left;
@@ -141,7 +141,7 @@
     margin:auto
 }
 
-.reviews-header {
+.cards-header {
     background-color: white;
     font-size:large;
     width:75%;

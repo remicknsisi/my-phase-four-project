@@ -6,13 +6,14 @@ function Dashboard () {
     const { currentUser } = useContext(StudentContext)
     const navigate = useNavigate()
 
-    console.log(currentUser)
-
     function handleReviewsClick(){
         navigate(`/students/${currentUser.id}/reviews`)
     }
     function handleRateClick(){
         navigate(`/students/${currentUser.id}/reviews/new`)
+    }
+    function handleExtracurricularClick(){
+        navigate(`/students/${currentUser.id}/extracurriculars`)
     }
     if (!currentUser || currentUser.error){
         return (
@@ -38,7 +39,7 @@ function Dashboard () {
                     <button className="dashboard-tiles">
                         My Classes
                     </button>
-                    <button className="dashboard-tiles">
+                    <button className="dashboard-tiles" onClick={handleExtracurricularClick}>
                         My Extracurriculars
                     </button>
                 </div>
