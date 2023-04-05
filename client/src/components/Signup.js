@@ -9,7 +9,7 @@ function Signup (){
     const [image, setImage] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [password_confirmation, setPasswordConfirmation] = useState('')
     const [errorsList, setErrorsList] = useState([])
     const { signup } = useContext(StudentContext)
 
@@ -24,7 +24,7 @@ function Signup (){
             body: JSON.stringify({
                 password,
                 username, 
-                passwordConfirmation,
+                password_confirmation,
                 image,
                 year,
                 house,
@@ -35,8 +35,8 @@ function Signup (){
             console.log(res)
             if(res.ok){
                 res.json().then((newStudent) => {
-                    console.log(newStudent)
-                    // need to get that valid response!
+                    signup(newStudent)
+                    navigate('/')
                 })
             } else {
                 res.json().then((newStudent) => {
@@ -52,14 +52,6 @@ function Signup (){
                 })
             }
         })
-
-        //
-        // .then(newStudent => { console.log(newStudent.errors)
-        //     if (!newStudent.errors){
-        //         signup(newStudent)
-        //         navigate('/')
-        //     }
-        // })
     }
 
     return (
@@ -120,7 +112,7 @@ function Signup (){
                 <label>Confirm Password: </label>
                 <input
                 type="password"
-                value={passwordConfirmation}
+                value={password_confirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 className='login-input'/>
                 <br/>
