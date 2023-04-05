@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Navigate } from "react-router";
 import { StudentContext } from "../context/StudentProvider.js";
 
 function Login() {
@@ -26,10 +27,7 @@ function Login() {
             if(res.ok){
                 res.json().then((user) => login(user))
             } else {
-                res.json().then(
-                    console.log('hi - error')
-                    // set error to display
-                )
+                res.json().then((user) => setError(user.error.login))
             }
         })
     }
@@ -52,7 +50,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           className='login-input'
         />
-        <br/>
+        <p className="error-message">**{error}**</p>
         <button type="submit">Login</button>
         <p>Don't have an account? Sign up</p>
       </form>
