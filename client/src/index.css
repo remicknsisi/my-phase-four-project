@@ -182,3 +182,11 @@
 .signup-prompt {
     font-size: medium;
 }
+
+.signup-header {
+    text-align: center;
+    background-color: white;
+    width: 300px;
+    margin:auto;
+    padding:25px;
+}

@@ -38,14 +38,48 @@ function Signup (){
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label></label>
-                <input></input>
-                <label></label>
-                <input></input>
-                <label></label>
-                <input></input>
+        <div className='login-container'>
+            <h1 className="signup-header">Sign Up Below</h1>
+            <form onSubmit={handleSubmit} className="login-form">
+                <label>Name: </label>
+                <input
+                type="text">
+
+                </input>
+                <label>House: </label>
+                <input
+                type="text">
+
+                </input>
+                <label>Year: </label>
+                <input
+                type="number">
+
+                </input>
+                <label>Image: </label>
+                <input
+                type="text">
+
+                </input>
+                <br/>
+                <br/>
+                <label>Username: </label>
+                <input
+                type="text">
+
+                </input>
+                <label>Password: </label>
+                <input
+                type="password">
+
+                </input>
+                <label>Confirm Password: </label>
+                <input
+                type="password">
+                    
+                </input>
+                <br/>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     )
