@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
-import { Navigate } from "react-router";
 import { StudentContext } from "../context/StudentProvider.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
+
+    const navigate = useNavigate()
 
     const { login } = useContext(StudentContext)
   
@@ -30,7 +31,8 @@ function Login() {
                     login(user)
                     setUsername('')
                     setPassword('')
-                    setError('')})
+                    setError('')
+                    navigate('/')})
             } else {
                 res.json().then((user) => setError(user.error.login))
             }

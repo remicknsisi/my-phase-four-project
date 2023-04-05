@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   resources :extracurriculars, only: [:index]
   resources :reviews, only: [:index, :show, :destroy]
   resources :teachers, only: [:index, :show]
-  resources :students, only: [:index, :show]
+  resources :students, only: [:index, :show, :create]
 
   post "/students/:student_id/reviews", to: "reviews#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "students#show"
-  post "/signup", to: "student#create"
+  post "/signup", to: "students#create"
   # root to: "main#index"
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
