@@ -2,19 +2,19 @@ require 'faker'
 
 puts "🌱 Seeding wizards..."
 
-Student.create(year: 3, house: 'Gryffindor', name: 'Harry Potter', image:'https://fantasytopics.com/wp-content/uploads/2022/06/Harry-Potter.jpg.webp', username: "hpotter", password: "quidditchislife")
-Student.create(year: 3, house: 'Gryffindor', name: 'Ron Weasley', image:'https://fantasytopics.com/wp-content/uploads/2022/06/Ron-Weasley.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 3, house: 'Gryffindor', name: 'Hermione Granger', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Hermione-Granger.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 3, house: 'Slytherin', name: 'Draco Malfoy', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Draco-Malfoy.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 4, house: 'Ravenclaw', name: 'Cho Chang', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Cho-Chang.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 5, house: 'Hufflepuff', name: 'Cedric Diggory', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Cedric-Diggory.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 3, house: 'Gryffindor', name: 'Dean Thomas', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Dean-Thomas.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 3, house: 'Slytherin', name: 'Vincent Crabbe', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Vincent-Crabbe.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 3, house: 'Slytherin', name: 'Gregory Goyle', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Gregory-Goyle.jpg.webp')
-Student.create(year: 3, house: 'Gryffindor', name: 'Neville Longbottom', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/neville-longbottom.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 2, house: 'Gryffindor', name: 'Ginny Weasley', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Ginny-Weasley.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 3, house: 'Ravenclaw', name: 'Luna Lovegood', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Luna-Lovegood.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
-Student.create(year: 3, house: 'Slytherin', name: 'Pansy Parkinson', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Pansy-Parkinson.jpg.webp', username: Faker::Internet.username, password: Faker::Internet.password)
+Student.create(year: 3, house: 'Gryffindor', name: 'Harry Potter', image:'https://fantasytopics.com/wp-content/uploads/2022/06/Harry-Potter.jpg.webp', username: "hpotter", password: "quidditchislife", password_confirmation: "quidditchislife")
+Student.create(year: 3, house: 'Gryffindor', name: 'Ron Weasley', image:'https://fantasytopics.com/wp-content/uploads/2022/06/Ron-Weasley.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 3, house: 'Gryffindor', name: 'Hermione Granger', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Hermione-Granger.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 3, house: 'Slytherin', name: 'Draco Malfoy', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Draco-Malfoy.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 4, house: 'Ravenclaw', name: 'Cho Chang', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Cho-Chang.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 5, house: 'Hufflepuff', name: 'Cedric Diggory', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Cedric-Diggory.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 3, house: 'Gryffindor', name: 'Dean Thomas', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Dean-Thomas.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 3, house: 'Slytherin', name: 'Vincent Crabbe', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Vincent-Crabbe.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 3, house: 'Slytherin', name: 'Gregory Goyle', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Gregory-Goyle.jpg.webp', password: 'password', password_confirmation: "password")
+Student.create(year: 3, house: 'Gryffindor', name: 'Neville Longbottom', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/neville-longbottom.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 2, house: 'Gryffindor', name: 'Ginny Weasley', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Ginny-Weasley.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 3, house: 'Ravenclaw', name: 'Luna Lovegood', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Luna-Lovegood.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
+Student.create(year: 3, house: 'Slytherin', name: 'Pansy Parkinson', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Pansy-Parkinson.jpg.webp', username: Faker::Internet.username, password: 'password', password_confirmation: "password")
 
 Teacher.create(classes: "Potions, Defense Against the Dark Arts", house: "Slytherin", name: "Severus Snape", specialty: 'Potions', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Severus-Snape.jpg.webp')
 Teacher.create(classes: "Transfiguration", house: "Gryffindor", name: "Minerva McGonagall", specialty: 'Transfiguration', image: 'https://fantasytopics.com/wp-content/uploads/2022/06/Minerva-McGonagall.jpg.webp')
@@ -48,5 +48,14 @@ Extracurricular.create(name: "Apparition", image: '', about: "Apparition was an 
         comment: Faker::Movies::HarryPotter.quote,
     )
 end
+
+10.times do
+    Signup.create(
+        extracurricular_id: rand(0..6),
+        student_id: rand(0..13)
+    )
+end
+
+Signup.create(extracurricular_id: 1, student_id: 1)
 
 puts "✅ Done seeding!"

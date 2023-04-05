@@ -21,6 +21,7 @@ class Student < ApplicationRecord
     end
 
     has_many :reviews
-    has_many :extracurriculars
+    has_many :signups
+    has_many :extracurriculars, through: :signups
     has_many :teachers, through: :reviews
 end

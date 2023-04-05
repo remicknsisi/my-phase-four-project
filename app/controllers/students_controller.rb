@@ -5,14 +5,14 @@ class StudentsController < ApplicationController
 
     def index
         students = Student.all
-        render json: students, include: :reviews
+        render json: students, include: [:reviews, :extracurriculars]
     end
 
     #persists login
     def show
         student = Student.find_by(id: session[:user_id])
         if student
-            render json: student, include: :reviews
+            render json: student, include: [:reviews, :extracurriculars]
         else 
             render json: { error: "Not authorized" }, status: :unauthorized
         end
