@@ -22,21 +22,18 @@ function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('http://localhost:3000/students')
-    .then(res => res.json()
-      // {
-      // console.log(res)
-      // if (res.ok) {
-      //   res.json()
-      //   .then(studentData => {
-      //     setStudents(studentData)})
-      // }}
-      )
-      .then(data => console.log(data))
+    fetch('/students')
+    .then(res =>{
+      if (res.ok) {
+        res.json()
+        .then(studentData => {
+          setStudents(studentData)})
+      }}
+      ) 
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:3000/teachers')
+    fetch('/teachers')
     .then(res => {
       if (res.ok) {
         res.json()
@@ -46,7 +43,7 @@ function App() {
   }, [])
   
   useEffect(() => {
-    fetch('http://localhost:3000/extracurriculars')
+    fetch('/extracurriculars')
     .then(res => {
       if (res.ok) {
         res.json()

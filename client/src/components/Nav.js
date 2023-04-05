@@ -25,7 +25,7 @@ function Nav() {
         );
     } else {
         return (
-            <div>
+            <div className="nav">
                 <NavLink to="/login" className="nav-link">
                     <button>Login</button>
                 </NavLink>

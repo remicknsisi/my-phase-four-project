@@ -6,8 +6,6 @@ function Dashboard () {
     const { currentUser } = useContext(StudentContext)
     const navigate = useNavigate()
 
-    console.log(currentUser)
-
     function handleReviewsClick(){
         navigate(`/students/${currentUser.id}/reviews`)
     }
