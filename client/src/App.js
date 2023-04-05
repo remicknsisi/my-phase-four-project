@@ -8,9 +8,9 @@ import Login from "./components/Login.js";
 import DisplayReviews from "./components/DisplayReviews.js";
 import NewReviewForm from "./components/NewReviewForm.js";
 import DisplayExtracurriculars from "./components/DisplayExtracurriculars.js";
-import Extracurricular from "./components/Extracurricular.js";
 import { StudentProvider } from "./context/StudentProvider.js"
 import Signup from "./components/Signup.js"
+import Letter from "./components/Letter.js"
 
 function App() {
   const [students, setStudents] = useState([])
@@ -93,6 +93,7 @@ function App() {
           <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars/>}/>
           <Route path="/students/:student_id/reviews" element={<DisplayReviews onDeleteReview={handleDeleteReview} teachers={teachers}/>}/>
           <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students} onSubmit={handleSubmitReview}/>}/>
+          <Route path="/students/:student_id/letter" element={<Letter/>}/>
         </Routes>
       </header>
       </StudentProvider>

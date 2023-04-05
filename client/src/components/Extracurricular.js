@@ -13,7 +13,7 @@ function Extracurricular ({ extracurricular }) {
 
     return (
         <div className="associated-card">
-            <img src={image}/>
+            <img className="club-img" src={image}/>
             <h3>About: {name}</h3>
             <p>{about}</p>
             <button onClick={handleLeaveClub}>Leave this Club</button>

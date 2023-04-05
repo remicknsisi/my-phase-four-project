@@ -190,3 +190,12 @@
     margin:auto;
     padding:25px;
 }
+
+.club-img {
+    max-width: 300px;
+    height: auto
+}
+
+.letter {
+    background-color: white;
+}

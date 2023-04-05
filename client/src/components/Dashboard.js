@@ -6,15 +6,6 @@ function Dashboard () {
     const { currentUser } = useContext(StudentContext)
     const navigate = useNavigate()
 
-    function handleReviewsClick(){
-        navigate(`/students/${currentUser.id}/reviews`)
-    }
-    function handleRateClick(){
-        navigate(`/students/${currentUser.id}/reviews/new`)
-    }
-    function handleExtracurricularClick(){
-        navigate(`/students/${currentUser.id}/extracurriculars`)
-    }
     if (!currentUser || currentUser.error){
         return (
             <h1>Please Log In or Sign Up.</h1>
@@ -27,19 +18,19 @@ function Dashboard () {
                 <img src={currentUser.image} className='dashboard-image'/>
                 <br/>
                 <div className='dashboard-container'>
-                    <button className="dashboard-tiles" onClick={handleReviewsClick}>
+                    <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}/reviews`)}>
                         My Reviews
                     </button>
-                    <button className="dashboard-tiles" onClick={handleRateClick}>
+                    <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}/reviews/new`)}>
                         Rate My Professor
                     </button>
-                    <button className="dashboard-tiles">
+                    <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}/letter`)}>
                         Hogwarts Acceptance Letter
                     </button>
                     <button className="dashboard-tiles">
                         My Classes
                     </button>
-                    <button className="dashboard-tiles" onClick={handleExtracurricularClick}>
+                    <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}/extracurriculars`)}>
                         My Extracurriculars
                     </button>
                 </div>
