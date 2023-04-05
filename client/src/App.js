@@ -4,7 +4,6 @@ import Dashboard from "./components/Dashboard.js"
 import Nav from "./components/Nav.js";
 import DisplayUsers from "./components/DisplayUsers.js";
 import TeacherDetails from "./components/TeacherDetails.js";
-import StudentDetails from "./components/StudentDetails.js";
 import Login from "./components/Login.js";
 import Reviews from "./components/Reviews.js";
 import NewReviewForm from "./components/NewReviewForm.js";
@@ -91,8 +90,6 @@ function App() {
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
           <Route path="/extracurriculars" element={<DisplayExtracurriculars extracurriculars={extracurriculars}/>}/>
           <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} />  
-          {/* possibly consider removing logic to look at one user, as nancy suggests not to do so:  */}
-          <Route path="/students/:id" element={<StudentDetails/>} />   
           <Route path="/students/:student_id/reviews" element={<Reviews onDeleteReview={handleDeleteReview} teachers={teachers}/>}/>
           <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students} onSubmit={handleSubmitReview}/>}/>
         </Routes>

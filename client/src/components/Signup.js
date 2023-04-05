@@ -32,7 +32,6 @@ function Signup (){
             })
         })
         .then(res => {
-            console.log(res)
             if(res.ok){
                 res.json().then((newStudent) => {
                     signup(newStudent)
@@ -47,7 +46,7 @@ function Signup (){
                     setHouse('Choose a House')
                     setYear('Choose a Year')
                     setImage('')
-                    const errorLis = newStudent.errors.map(error => <li>{error}</li>)
+                    const errorLis = newStudent.errors.map(error => <li key={error}>{error}</li>)
                     setErrorsList(errorLis)
                 })
             }
@@ -124,5 +123,3 @@ function Signup (){
 }
 
 export default Signup;
-
-// timestamp 45:30 for nancys form

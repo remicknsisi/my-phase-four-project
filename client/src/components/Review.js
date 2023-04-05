@@ -6,7 +6,7 @@ function Review ({ review, onDeleteReview, teachers }) {
     const ratedTeacher = teachers.find(teacher => teacher.id == teacher_id)
 
     function handleDeleteReview(){
-        fetch(`http://localhost:3000/reviews/${id}`, {
+        fetch(`/reviews/${id}`, {
             method: 'DELETE'})
           .then(res => res.json())
           .then(deletedReview => onDeleteReview(deletedReview))}

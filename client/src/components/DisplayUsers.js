@@ -31,24 +31,3 @@ function DisplayUsers ({ inStudents, students, teachers, selectedHouse, onNewSel
 }
 
 export default DisplayUsers;
-
-
-// {inStudents ? 
-//     <>
-//         <div className="users-container">
-//             {students.map(student => {
-//                 return (
-//                     <Student key={student.id} student={student}/>
-//                 )
-//             })}
-//         </div>
-//     </> :
-//     <>
-//         <div className="users-container">
-//             {teachers.map(teacher => {
-//                 return (
-//                     <Teacher key={teacher.id} teacher={teacher}/>
-//                 )
-//             })}
-//         </div>
-//     </>}

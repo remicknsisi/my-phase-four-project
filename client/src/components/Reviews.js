@@ -1,14 +1,17 @@
-import React from "react";
-import Review from "./Review.js"
+import React, { useContext } from "react";
+import Review from "./Review.js";
+import { StudentContext } from "../context/StudentProvider.js";
 
-function Reviews ({ user, onDeleteReview, teachers }) {
 
-    const reviews = user.reviews
+function Reviews ({ onDeleteReview, teachers }) {
+    const { currentUser } = useContext(StudentContext)
+
+    const reviews = currentUser.reviews
 
     return (
         <div className="reviews-header">
             <h2>My Reviews</h2>
-            {user.id ? reviews.map(review => <Review teachers={teachers} onDeleteReview={onDeleteReview} review={review} key={review.id}/>) : <p>Unauthorized - please log in</p>}
+            {reviews.map(review => <Review teachers={teachers} onDeleteReview={onDeleteReview} review={review} key={review.id}/>)}
         </div>
     )
 }
