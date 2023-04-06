@@ -6,7 +6,9 @@ function Nav() {
     const { currentUser, logout } = useContext(StudentContext)
 
     function handleLogout(){
-        fetch("/logout")
+        fetch("/logout",{
+            method: "DELETE"
+        })
         .then(() => {
             logout()
             Navigate('/login')
