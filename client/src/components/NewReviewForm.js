@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { StudentContext } from "../context/StudentProvider.js";
 
 function NewReviewForm ({ teachers, students, onSubmit }) {
-
     const [newComment, setNewComment] = useState('')
     const [newRating, setNewRating] = useState()
     const [newTeacher, setNewTeacher] = useState({})
+    const { handleSubmitReview } = useContext(StudentContext)
 
     const { student_id } = useParams()
 
     const teacherOptions = teachers.map(teacher => <option value={teacher.id}>{teacher.name}</option>)
 
-    function handleSubmitReview(e){
+    function onSubmitReview(e){
         e.preventDefault()
 
         const newReview = {
@@ -33,14 +34,14 @@ function NewReviewForm ({ teachers, students, onSubmit }) {
             const student = students.find(student => student.id === newReview.student_id)
             const studentUpdatedReviews = [...student.reviews, newReview]
             const updatedStudent = {...student, reviews: studentUpdatedReviews}
-            onSubmit(updatedStudent, newReview.id)
+            handleSubmitReview(updatedStudent, newReview.id)
         })
     }
 
     return (
         <div className="review-container">
             <label>Rate My Professor: </label>
-            <form className="review-form" onSubmit={handleSubmitReview}>
+            <form className="review-form" onSubmit={onSubmitReview}>
             Select Teacher: <select className="review-input" type="number" value={newTeacher} onChange={e => setNewTeacher(e.target.value)}>
                     {teacherOptions}
                 </select>

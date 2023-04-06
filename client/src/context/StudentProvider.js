@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StudentContext = React.createContext();
 
 const StudentProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("/me")
@@ -18,7 +20,12 @@ const StudentProvider = ({ children }) => {
   const logout = () => {setCurrentUser(null)}
 
   const signup = (newStudent) => {setCurrentUser(newStudent)}
-    
+  
+  function handleSubmitReview (updatedStudent, newReviewId){
+    console.log(updatedStudent, newReviewId)
+    setCurrentUser(updatedStudent)
+    navigate(`/students/${updatedStudent.id}/reviews`)
+  }
   function handleDeleteReview(deletedReview){
     const updatedReviews = currentUser.reviews.filter(review => review.id !== deletedReview.id)
     const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}
@@ -26,7 +33,7 @@ const StudentProvider = ({ children }) => {
   }
 
   return (
-    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview}}>
+    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview}}>
       {children}
     </StudentContext.Provider>
   )

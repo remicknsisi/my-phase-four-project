@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard.js"
 import Nav from "./components/Nav.js";
 import DisplayUsers from "./components/DisplayUsers.js";
@@ -17,7 +17,6 @@ function App() {
   const [teachers, setTeachers] = useState([])
   const [selectedHouse, setSelectedHouse] = useState('All')
   const [isChecked, setIsChecked] = useState(false)
-  const navigate = useNavigate()
 
   useEffect(() => {
     fetch('/students')
@@ -39,13 +38,6 @@ function App() {
           setTeachers(teacherData)})
       }})
   }, [])
-
-
-  function handleSubmitReview (updatedStudent, id){
-    const studentsWithUpdatedReviews = students.map(student => student.id === updatedStudent.id ? updatedStudent : student)
-    setStudents(studentsWithUpdatedReviews)
-    navigate(`/students/${updatedStudent.id}/reviews`)
-    }
 
   function handleNewSelection(house){
     setSelectedHouse(house)
@@ -78,10 +70,10 @@ function App() {
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false} onCheck={handleCheck} isChecked={isChecked}/>} /> 
           <Route path="/extracurriculars" element={<DisplayExtracurriculars inStudents={false}/>}/>
           <Route path="/teachers/:id" element={<TeacherDetails teachers={teachers}/>} /> 
-          {/* need to make it so cant delete off a teacher page */}
+          {/* need to make it so cant delete off a teacher page and so you can only delete your own */}
           <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars inStudents={true}/>}/>
           <Route path="/students/:student_id/reviews" element={<DisplayReviews teachers={teachers} students={students}/>}/>
-          <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students} onSubmit={handleSubmitReview}/>}/>
+          <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students}/>}/>
           <Route path="/students/:student_id/letter" element={<Letter/>}/>
         </Routes>
       </header>
