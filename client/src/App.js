@@ -16,7 +16,6 @@ function App() {
   const [students, setStudents] = useState([])
   const [teachers, setTeachers] = useState([])
   const [selectedHouse, setSelectedHouse] = useState('All')
-
   const navigate = useNavigate()
 
   useEffect(() => {

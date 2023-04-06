@@ -1,7 +1,7 @@
 import React from "react";
 
 function Student ({ student }) {
-    const { house, id, image, name, year } = student
+    const { house, image, name, year } = student
 
     return (
         <div className="card">

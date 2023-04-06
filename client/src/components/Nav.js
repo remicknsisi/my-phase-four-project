@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Navigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { StudentContext } from "../context/StudentProvider.js";
 
 function Nav() {
     const { currentUser, logout } = useContext(StudentContext)
+    const navigate = useNavigate()
 
     function handleLogout(){
         fetch("/logout",{
@@ -11,7 +12,7 @@ function Nav() {
         })
         .then(() => {
             logout()
-            Navigate('/login')
+            navigate('/login')
         })
     }
 
