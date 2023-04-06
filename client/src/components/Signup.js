@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { StudentContext } from "../context/StudentProvider.js";
 
 function Signup (){
@@ -117,6 +117,7 @@ function Signup (){
                 <br/>
                 <button type="submit">Sign Up</button>
                 <p className="error-message">{errorsList}</p>
+                <p className='signup-prompt'>Already have an account? <Link to={`/login`}>Login</Link></p>
             </form>
         </div>
     )

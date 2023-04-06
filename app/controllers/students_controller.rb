@@ -5,14 +5,14 @@ class StudentsController < ApplicationController
 
     def index
         students = Student.all
-        render json: students, include: [:reviews, :extracurriculars]
+        render json: students, include: [:reviews, :extracurriculars, :teachers]
     end
 
     #persists login
     def show
         student = Student.find_by(id: session[:user_id])
         if student
-            render json: student, include: [:reviews, :extracurriculars]
+            render json: student, include: [:reviews, :extracurriculars, :teachers]
         else 
             render json: { error: "Not authorized" }, status: :unauthorized
         end
@@ -28,6 +28,16 @@ class StudentsController < ApplicationController
         else
             render json: { errors: student.errors.full_messages }, status: :unprocessable_entity
         end
+    end
+
+    def update
+        # student = Student.find_by(id: params[:student_id])
+        # if student
+        #     updatedStudent = student.reviews
+        #     render json: updatedStudent, status: :ok
+        # else
+        #     render json: { errors: student.errors.full_messages }, status: :unprocessable_entity
+        # end
     end
 
     private

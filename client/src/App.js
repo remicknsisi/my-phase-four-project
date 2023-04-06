@@ -16,6 +16,7 @@ function App() {
   const [students, setStudents] = useState([])
   const [teachers, setTeachers] = useState([])
   const [selectedHouse, setSelectedHouse] = useState('All')
+  const [isChecked, setIsChecked] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -39,29 +40,28 @@ function App() {
       }})
   }, [])
 
-  function handleDeleteReview(deletedReview){
-    // const updatedReviews = currentUser.reviews.filter(review => review.id !== deletedReview.id)
-    // const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}
-    // setCurrentUser(userWithUpdatedReviews)
-  }
+
   function handleSubmitReview (updatedStudent, id){
     const studentsWithUpdatedReviews = students.map(student => student.id === updatedStudent.id ? updatedStudent : student)
     setStudents(studentsWithUpdatedReviews)
     navigate(`/students/${updatedStudent.id}/reviews`)
     }
 
-    const studentsToDisplay = students.filter(student => {
-      if (selectedHouse === "All") return true;
-      else if (selectedHouse === "Gryffindor") return student.house === 'Gryffindor';
-      else if (selectedHouse === "Ravenclaw") return student.house === 'Ravenclaw';
-      else if (selectedHouse === "Slytherin") return student.house === 'Slytherin';
-      else if (selectedHouse === "Hufflepuff") return student.house === 'Hufflepuff';
-      else return student.house === selectedHouse;
-    })
-
   function handleNewSelection(house){
     setSelectedHouse(house)
   }
+  function handleCheck(){
+    setIsChecked(!isChecked)
+  }
+
+  const studentsToDisplay = students.filter(student => {
+    if (selectedHouse === "All") return true;
+    else if (selectedHouse === "Gryffindor") return student.house === 'Gryffindor';
+    else if (selectedHouse === "Ravenclaw") return student.house === 'Ravenclaw';
+    else if (selectedHouse === "Slytherin") return student.house === 'Slytherin';
+    else if (selectedHouse === "Hufflepuff") return student.house === 'Hufflepuff';
+    else return student.house === selectedHouse;
+  })
 
   return (
     <div className="App">
@@ -75,11 +75,12 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
-          <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
+          <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false} onCheck={handleCheck} isChecked={isChecked}/>} /> 
           <Route path="/extracurriculars" element={<DisplayExtracurriculars inStudents={false}/>}/>
-          <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} /> 
+          <Route path="/teachers/:id" element={<TeacherDetails teachers={teachers}/>} /> 
+          {/* need to make it so cant delete off a teacher page */}
           <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars inStudents={true}/>}/>
-          <Route path="/students/:student_id/reviews" element={<DisplayReviews onDeleteReview={handleDeleteReview} teachers={teachers}/>}/>
+          <Route path="/students/:student_id/reviews" element={<DisplayReviews teachers={teachers} students={students}/>}/>
           <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students} onSubmit={handleSubmitReview}/>}/>
           <Route path="/students/:student_id/letter" element={<Letter/>}/>
         </Routes>

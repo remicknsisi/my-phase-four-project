@@ -29,9 +29,6 @@ function Nav() {
     } else {
         return (
             <div className="nav">
-                <NavLink to="/login" className="nav-link">
-                    <button>Login</button>
-                </NavLink>
             </div>
         )
     }

@@ -1,9 +1,10 @@
 import React from "react";
 import Student from './Student.js';
 import Teacher from './Teacher.js';
-import Filter from "./Filter.js"
+import Filter from "./Filter.js";
+import Sort from "./Sort.js";
 
-function DisplayUsers ({ inStudents, students, teachers, selectedHouse, onNewSelection }) {
+function DisplayUsers ({ inStudents, students, teachers, selectedHouse, onNewSelection, onCheck, isChecked }) {
     return (
         <div>
             {inStudents ? 
@@ -18,6 +19,7 @@ function DisplayUsers ({ inStudents, students, teachers, selectedHouse, onNewSel
                 </div>
             </> :
             <>
+                <Sort onCheck={onCheck} isChecked={isChecked}/>
                 <div className="users-container">
                     {teachers ? teachers.map(teacher => {
                         return (

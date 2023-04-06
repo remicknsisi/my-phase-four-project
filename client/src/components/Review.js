@@ -1,30 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StudentContext } from "../context/StudentProvider.js";
 
-function Review ({ review, onDeleteReview, teachers, students }) {
-    const { teacher_id, comment, rating, id } = review
+function Review ({ review, students }) {
+    const { teacher_id, comment, rating, id, student_id } = review
+    const { currentUser, handleDeleteReview } = useContext(StudentContext)
 
-    const ratedTeacher = teachers.find(teacher => teacher.id == teacher_id)
+    const reviewAuthor = students.map(student => student.id == student_id ? student.name : null)
+    const reviewedTeacher = currentUser.teachers.find(teacher => teacher.id == teacher_id)
 
-    function handleDeleteReview(){
+    function onDelete(){
         fetch(`/reviews/${id}`, {
             method: 'DELETE'})
           .then(res => res.json())
-          .then(deletedReview => onDeleteReview(deletedReview))}
+          .then(deletedReview => handleDeleteReview(deletedReview))}
     
-    return (
-        <div className="associated-card">
-            {students.map(student => {
-                return (
-                    <>
-                    <h3>Professor: {ratedTeacher.name} | Rating: {'✨'.repeat(rating)}</h3>
-                    <p>{comment}</p>
-                    <p>Posted by {student.name}</p>
-                    <button onClick={handleDeleteReview}>Delete Review</button>
-                    </>
-                )
-            })}
-        </div>
-    )
+    if (currentUser){
+        return (
+            <div className="associated-card">
+                <h3>Professor: {reviewedTeacher.name} | Rating: {'✨'.repeat(rating)}</h3>
+                <p>{comment}</p>
+                <p>Posted by {reviewAuthor}</p>
+                <button onClick={() => onDelete()}>Delete Review</button>
+            </div>
+        )
+    } else {
+        <h1>Please Log In or Sign Up.</h1>
+    }
 }
 
 export default Review;

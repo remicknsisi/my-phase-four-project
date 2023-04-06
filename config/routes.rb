@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :extracurriculars, only: [:index]
   resources :reviews, only: [:index, :show, :destroy]
   resources :teachers, only: [:index, :show]
-  resources :students, only: [:index, :show, :create]
+  resources :students, only: [:index, :show, :create, :update]
 
   post "/students/:student_id/reviews", to: "reviews#create"
   post "/login", to: "sessions#create"

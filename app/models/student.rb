@@ -24,4 +24,7 @@ class Student < ApplicationRecord
     has_many :signups
     has_many :extracurriculars, through: :signups
     has_many :teachers, through: :reviews
+
+      # add dependency here for reviews
+
 end

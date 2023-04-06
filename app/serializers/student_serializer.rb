@@ -3,4 +3,5 @@ class StudentSerializer < ActiveModel::Serializer
 
   has_many :reviews
   has_many :extracurriculars, through: :signups
+  has_many :teachers, through: :reviews
 end
