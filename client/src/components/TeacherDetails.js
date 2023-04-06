@@ -7,7 +7,7 @@ function TeacherDetails ({ teachers, onDeleteReview }) {
     const { id } = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:3000/teachers/${id}`)
+        fetch(`/teachers/${id}`)
         .then(res => res.json())
         .then(teacherData => setTeacher(teacherData))
     }, []) 

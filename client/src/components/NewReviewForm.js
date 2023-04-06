@@ -21,7 +21,7 @@ function NewReviewForm ({ teachers, students, onSubmit }) {
             comment: newComment
         }
 
-        fetch(`http://localhost:3000/students/${student_id}/reviews`, {
+        fetch(`/students/${student_id}/reviews`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(
