@@ -1,14 +1,17 @@
 import React, { useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { StudentContext } from "../context/StudentProvider.js";
 
-function NewReviewForm ({ teachers, students, onSubmit }) {
+function NewReviewForm ({ teachers, students }) {
     const [newComment, setNewComment] = useState('')
     const [newRating, setNewRating] = useState()
     const [newTeacher, setNewTeacher] = useState({})
+    const [errorsList, setErrorsList] = useState([])
+    // set default values for these to avoid breaking - or validations in back end!!
     const { handleSubmitReview } = useContext(StudentContext)
-
     const { student_id } = useParams()
+    const navigate = useNavigate()
+
 
     const teacherOptions = teachers.map(teacher => <option value={teacher.id}>{teacher.name}</option>)
 
@@ -29,12 +32,20 @@ function NewReviewForm ({ teachers, students, onSubmit }) {
               newReview
             )
           })
-          .then(res => res.json())
-          .then(newReview => {
-            const student = students.find(student => student.id === newReview.student_id)
-            const studentUpdatedReviews = [...student.reviews, newReview]
-            const updatedStudent = {...student, reviews: studentUpdatedReviews}
-            handleSubmitReview(updatedStudent, newReview.id)
+          .then(res => {
+            if(res.ok){
+                res.json().then((newReview) => {
+                    handleSubmitReview(newReview)
+                    setNewComment('')
+                    setNewRating()
+                    setNewTeacher({})
+                    navigate('/')})
+            } else {
+                res.json().then((message) => {
+                    const errorLis = message.errors.map(error => <li key={error}>{error}</li>)
+                    setErrorsList(errorLis)
+                })
+            }
         })
     }
 
@@ -53,6 +64,7 @@ function NewReviewForm ({ teachers, students, onSubmit }) {
                 </input>
                 <br/>
                 <button>Submit</button>
+                <p className="error-message">{errorsList}</p>
             </form>
         </div>
     )

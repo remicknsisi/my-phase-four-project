@@ -21,8 +21,9 @@ const StudentProvider = ({ children }) => {
 
   const signup = (newStudent) => {setCurrentUser(newStudent)}
   
-  function handleSubmitReview (updatedStudent, newReviewId){
-    console.log(updatedStudent, newReviewId)
+  function handleSubmitReview (newReview){
+    const studentUpdatedReviews = [...currentUser.reviews, newReview]
+    const updatedStudent = {...currentUser, reviews: studentUpdatedReviews}
     setCurrentUser(updatedStudent)
     navigate(`/students/${updatedStudent.id}/reviews`)
   }

@@ -2,7 +2,11 @@ class ReviewsController < ApplicationController
     def create
         student = Student.find_by(id: params[:student_id])
         review = student.reviews.create(review_params)
-        render json: review, status: :created
+        if review.valid?
+            render json: review, status: :created
+        else
+            render json: { errors: review.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     # mkae it so nothing is sent back and status is appropriate, add error handling
