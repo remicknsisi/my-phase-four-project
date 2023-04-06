@@ -12,8 +12,6 @@ function TeacherDetails ({ teachers, onDeleteReview }) {
         .then(teacherData => setTeacher(teacherData))
     }, []) 
 
-    const reviews = teacher.reviews.map(review => <Review review={review} key={review.id} teachers={teachers} onDeleteReview={onDeleteReview}/> )
-
     return (
         <div className="card-details">
             <h1>{teacher.name}</h1>
@@ -23,8 +21,9 @@ function TeacherDetails ({ teachers, onDeleteReview }) {
             <h2>{teacher.house}</h2>
             <h3>Classes taught this Academic Term:</h3>
                 {teacher.classes}
-            <h3>Reviews</h3>
-                {reviews}
+            <br/><br/>
+            <h3>Hear from other students:</h3>
+                {teacher.id ? teacher.reviews.map(review => <Review review={review} key={review.id} teachers={teachers} students={teacher.students} onDeleteReview={onDeleteReview}/>)  : null}
         </div>
     )
 }

@@ -27,9 +27,9 @@ function Dashboard () {
                     <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}/letter`)}>
                         Hogwarts Acceptance Letter
                     </button>
-                    <button className="dashboard-tiles">
+                    {/* <button className="dashboard-tiles">
                         My Classes
-                    </button>
+                    </button> */}
                     <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}/extracurriculars`)}>
                         My Extracurriculars
                     </button>

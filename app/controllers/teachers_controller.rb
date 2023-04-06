@@ -3,12 +3,12 @@ class TeachersController < ApplicationController
 
     def index
         teachers = Teacher.all
-        render json: teachers, include: :reviews
+        render json: teachers, include: [:reviews, :students]
     end
 
     def show
         teacher = Teacher.find(params[:id])
-        render json: teacher, include: :reviews
+        render json: teacher, include: [:reviews, :students]
     end
 
     private
