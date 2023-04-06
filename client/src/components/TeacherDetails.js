@@ -15,14 +15,14 @@ function TeacherDetails ({ teachers, onDeleteReview }) {
     return (
         <div className="card-details">
             <h1>{teacher.name}</h1>
-            Contact: {!teacher.name ? null : teacher.name.replace(/ /g, '').toLowerCase() + '@hogwarts.edu'}
-            <br/>
             <img className="user-image" src={teacher.image}/>
+            <br/>
+            Contact: {!teacher.name ? null : teacher.name.replace(/ /g, '').toLowerCase() + '@hogwarts.edu'}
             <h2>{teacher.house}</h2>
             <h3>Classes taught this Academic Term:</h3>
                 {teacher.classes}
-            <br/><br/>
-            <h3>Hear from other students:</h3>
+            <br/><br/><br/>
+            <h2 className='dashboard-title'>Hear from other Students</h2>
                 {teacher.id ? teacher.reviews.map(review => <Review review={review} key={review.id} teachers={teachers} students={teacher.students} onDeleteReview={onDeleteReview}/>)  : null}
         </div>
     )

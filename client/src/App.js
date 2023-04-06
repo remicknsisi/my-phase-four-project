@@ -15,7 +15,6 @@ import Letter from "./components/Letter.js"
 function App() {
   const [students, setStudents] = useState([])
   const [teachers, setTeachers] = useState([])
-  const [extracurriculars, setExtracurriculars] = useState([])
   const [selectedHouse, setSelectedHouse] = useState('All')
 
   const navigate = useNavigate()
@@ -38,16 +37,6 @@ function App() {
         res.json()
         .then(teacherData => {
           setTeachers(teacherData)})
-      }})
-  }, [])
-  
-  useEffect(() => {
-    fetch('/extracurriculars')
-    .then(res => {
-      if (res.ok) {
-        res.json()
-        .then(extracurricularData => {
-          setExtracurriculars(extracurricularData)})
       }})
   }, [])
 
@@ -88,9 +77,9 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false}/>} /> 
-          {/* <Route path="/extracurriculars" element={<DisplayExtracurriculars extracurriculars={extracurriculars}/>}/> */}
+          <Route path="/extracurriculars" element={<DisplayExtracurriculars inStudents={false}/>}/>
           <Route path="/teachers/:id" element={<TeacherDetails onDeleteReview={handleDeleteReview} teachers={teachers}/>} /> 
-          <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars/>}/>
+          <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars inStudents={true}/>}/>
           <Route path="/students/:student_id/reviews" element={<DisplayReviews onDeleteReview={handleDeleteReview} teachers={teachers}/>}/>
           <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students} onSubmit={handleSubmitReview}/>}/>
           <Route path="/students/:student_id/letter" element={<Letter/>}/>

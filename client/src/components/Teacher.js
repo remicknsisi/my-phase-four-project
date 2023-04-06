@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Teacher ({ teacher }) {
-    const { house, id, image, name, reviews, specialty, classes } = teacher
+    const { house, id, image, name, specialty } = teacher
 
     return (
         <div className="card">
