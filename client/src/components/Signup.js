@@ -74,7 +74,7 @@ function Signup (){
                 </select>
                 <br/>
                 <label>Year: </label>
-                <select className='login-input' onChange={e => setYear(e.target.value)}>
+                <select className='login-input' type="number" onChange={e => setYear(e.target.value)}>
                     <option>Choose a Year</option>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
