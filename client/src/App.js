@@ -42,6 +42,7 @@ function App() {
   function handleNewSelection(house){
     setSelectedHouse(house)
   }
+
   function handleCheck(){
     setIsChecked(!isChecked)
   }
@@ -69,11 +70,12 @@ function App() {
           <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false} onCheck={handleCheck} isChecked={isChecked}/>} /> 
           <Route path="/extracurriculars" element={<DisplayExtracurriculars inStudents={false}/>}/>
+          {/* make it so you cant see the leave this club button on this page - just number of members */}
           <Route path="/teachers/:id" element={<TeacherDetails teachers={teachers}/>} /> 
           {/* need to make it so cant delete off a teacher page and so you can only delete your own */}
           <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars inStudents={true}/>}/>
-          <Route path="/students/:student_id/reviews" element={<DisplayReviews teachers={teachers} students={students}/>}/>
-          <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers} students={students}/>}/>
+          <Route path="/students/:student_id/reviews" element={<DisplayReviews students={students}/>}/>
+          <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers}/>}/>
           <Route path="/students/:student_id/letter" element={<Letter/>}/>
         </Routes>
       </header>

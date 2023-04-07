@@ -42,17 +42,17 @@ Extracurricular.create(name: "Apparition", image: 'https://www.hp-lexicon.org/wp
 
 50.times do
     Review.create(
-        teacher_id: rand(0..13),
-        student_id: rand(0..13),
-        rating: rand(0..5),
+        teacher_id: rand(1..13),
+        student_id: rand(1..13),
+        rating: rand(1..5),
         comment: Faker::Movies::HarryPotter.quote,
     )
 end
 
 10.times do
     Signup.create(
-        extracurricular_id: rand(0..6),
-        student_id: rand(0..13)
+        extracurricular_id: rand(1..6),
+        student_id: rand(1..13)
     )
 end
 

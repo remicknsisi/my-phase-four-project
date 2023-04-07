@@ -2,24 +2,23 @@ import React, { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { StudentContext } from "../context/StudentProvider.js";
 
-function NewReviewForm ({ teachers, students }) {
+function NewReviewForm ({ teachers }) {
     const [newComment, setNewComment] = useState('')
     const [newRating, setNewRating] = useState()
-    const [newTeacher, setNewTeacher] = useState({})
+    const [newTeacherId, setNewTeacherId] = useState()
     const [errorsList, setErrorsList] = useState([])
     // set default values for these to avoid breaking - or validations in back end!!
     const { handleSubmitReview } = useContext(StudentContext)
     const { student_id } = useParams()
     const navigate = useNavigate()
 
-
-    const teacherOptions = teachers.map(teacher => <option value={teacher.id}>{teacher.name}</option>)
+    const teacherOptions = teachers.map(teacher => <option value={teacher.id} key={teacher.id}>{teacher.name}</option>)
 
     function onSubmitReview(e){
         e.preventDefault()
 
         const newReview = {
-            teacher_id: newTeacher,
+            teacher_id: newTeacherId,
             student_id: student_id,
             rating: newRating,
             comment: newComment
@@ -38,8 +37,8 @@ function NewReviewForm ({ teachers, students }) {
                     handleSubmitReview(newReview)
                     setNewComment('')
                     setNewRating()
-                    setNewTeacher({})
-                    navigate('/')})
+                    setNewTeacherId()
+                    navigate(`/students/${student_id}/reviews`)})
             } else {
                 res.json().then((message) => {
                     const errorLis = message.errors.map(error => <li key={error}>{error}</li>)
@@ -53,7 +52,8 @@ function NewReviewForm ({ teachers, students }) {
         <div className="review-container">
             <label>Rate My Professor: </label>
             <form className="review-form" onSubmit={onSubmitReview}>
-            Select Teacher: <select className="review-input" type="number" value={newTeacher} onChange={e => setNewTeacher(e.target.value)}>
+            Select Teacher: <select className="review-input" type="text" onChange={e => setNewTeacherId(1*e.target.value)}>
+                    <option>Select a Teacher</option>
                     {teacherOptions}
                 </select>
                 <br/>
