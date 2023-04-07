@@ -32,9 +32,14 @@ const StudentProvider = ({ children }) => {
     const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}
     setCurrentUser(userWithUpdatedReviews)
   }
+  function handleLeaveClub(club){
+    const updatedClubs = currentUser.extracurriculars.filter(extracurricular => extracurricular.id !== club.id)
+    const userWithUpdatedClubs = {...currentUser, extracurriculars: updatedClubs}
+    setCurrentUser(userWithUpdatedClubs)
+  }
 
   return (
-    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview}}>
+    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview, handleLeaveClub}}>
       {children}
     </StudentContext.Provider>
   )
