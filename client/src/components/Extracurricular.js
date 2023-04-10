@@ -8,7 +8,7 @@ function Extracurricular ({ extracurricular, allExtracurriculars }) {
     const navigate = useNavigate()
 
     function onLeaveClub(){
-        const deletedSignup = currentUser.signups.find(signup => signup.extracurricular_id == id)
+        const deletedSignup = currentUser.signups.find(signup => signup.extracurricular_id === id)
         fetch(`/signups/${deletedSignup.id}`, {
             method: 'DELETE'})
           .then(res => res.json())
@@ -40,7 +40,7 @@ function Extracurricular ({ extracurricular, allExtracurriculars }) {
 
     return (
         <div className="associated-card">
-            <img className="club-img" src={image}/>
+            <img alt="club" className="club-img" src={image}/>
             <h3>About: {name}</h3>
             <p>{about}</p>
             {allExtracurriculars ? <button onClick={onJoinClub}>Join this Club</button> : <button onClick={onLeaveClub}>Leave this Club</button>}

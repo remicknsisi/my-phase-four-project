@@ -8,7 +8,7 @@ function Teacher ({ teacher }) {
         <div className="card">
             <h1>{name}</h1>
             <h2>House: {house} | Specialty: {specialty}</h2>
-            <img className="user-image" src={image}></img>
+            <img alt="teacher" className="user-image" src={image}></img>
             <br/>
             <Link to={`/teachers/${id}`}>Read More</Link>
             <h2>Rating: {'✨'.repeat(average_rating)}</h2>

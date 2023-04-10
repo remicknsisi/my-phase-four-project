@@ -15,7 +15,7 @@ function Dashboard () {
             <div className="home">
                 <h1 className='dashboard-title'>Welcome to Hogwarts, {currentUser.name}</h1>
                 <br/>
-                <img src={currentUser.image} className='dashboard-image'/>
+                <img alt="user" src={currentUser.image} className='dashboard-image'/>
                 <br/>
                 <div className='dashboard-container'>
                     <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}/reviews`)}>

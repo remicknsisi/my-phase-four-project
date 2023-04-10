@@ -15,7 +15,7 @@ function TeacherDetails () {
     return (
         <div className="card-details">
             <h1>{teacher.name}</h1>
-            <img className="user-image" src={teacher.image}/>
+            <img alt="teacher" className="user-image" src={teacher.image}/>
             <br/>
             Contact: {!teacher.name ? null : teacher.name.replace(/ /g, '').toLowerCase() + '@hogwarts.edu'}
             <h2>{teacher.house}</h2>

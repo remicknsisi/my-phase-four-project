@@ -7,7 +7,7 @@ function Student ({ student }) {
         <div className="card">
             <h1>{name}</h1>
             <h2>House: {house} | Year: {year}</h2>
-            <img className="user-image" src={image}></img>
+            <img alt="student" className="user-image" src={image}></img>
             <br/>
         </div>
     )

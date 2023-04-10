@@ -201,4 +201,11 @@
 
 .letter {
     background-color: white;
+    padding:50px;
+
+}
+
+.signature {
+  width: 300px;
+  height: auto
 }
