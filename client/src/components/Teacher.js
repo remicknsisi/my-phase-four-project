@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Teacher ({ teacher }) {
-    const { house, id, image, name, specialty, reviews } = teacher
-    const averageRating = reviews.map(review => review.rating).reduce((sum, value) =>  
-    {return sum + value}, 0) / reviews.length
+    const { house, id, image, name, specialty, average_rating } = teacher
 
     return (
         <div className="card">
@@ -13,7 +11,7 @@ function Teacher ({ teacher }) {
             <img className="user-image" src={image}></img>
             <br/>
             <Link to={`/teachers/${id}`}>Read More</Link>
-            <h2>Rating: {'✨'.repeat(averageRating)}</h2>
+            <h2>Rating: {'✨'.repeat(average_rating)}</h2>
         </div>
     )
 }

@@ -59,7 +59,7 @@ function Login() {
         />
         {Boolean(error) ? <p className="error-message">**{error}**</p> : null}
         <button type="submit">Login</button>
-        <p className='signup-prompt'>Don't have an account? <Link to={`/signup`}>Sign up</Link></p>
+        <p className='signup-prompt'>Don't have an account? <Link to={`/createaccount`}>Sign up</Link></p>
       </form>
     </div>
     );

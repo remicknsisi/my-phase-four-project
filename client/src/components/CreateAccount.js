@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { StudentContext } from "../context/StudentProvider.js";
 
-function Signup (){
+function CreateAccount (){
     const [name, setName] = useState('')
     const [house, setHouse] = useState('Choose a House')
     const [year, setYear] = useState('Choose a Year')
@@ -123,4 +123,4 @@ function Signup (){
     )
 }
 
-export default Signup;
+export default CreateAccount;

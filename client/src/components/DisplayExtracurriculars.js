@@ -21,12 +21,12 @@ function DisplayExtracurriculars ({ inStudents }) {
             {inStudents ? 
                 <>
                     <h2>My Extracurriculars</h2>
-                    {currentUser.extracurriculars.map(extracurricular => <Extracurricular extracurricular={extracurricular} key={extracurricular.id}/>)}
+                    {currentUser.extracurriculars.map(extracurricular => <Extracurricular extracurricular={extracurricular} allExtracurriculars={false} key={extracurricular.id}/>)}
                 </>
             :
                 <>
                     <h2>All Extracurriculars</h2>
-                    {extracurriculars.map(extracurricular => <Extracurricular extracurricular={extracurricular} key={extracurricular.id}/>)}
+                    {extracurriculars.map(extracurricular => <Extracurricular extracurricular={extracurricular} allExtracurriculars={true} key={extracurricular.id}/>)}
                 </>
             }
         </div>

@@ -32,10 +32,10 @@ const StudentProvider = ({ children }) => {
     const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}
     setCurrentUser(userWithUpdatedReviews)
   }
-  function handleLeaveClub(club){
-    const updatedClubs = currentUser.extracurriculars.filter(extracurricular => extracurricular.id !== club.id)
-    const userWithUpdatedClubs = {...currentUser, extracurriculars: updatedClubs}
-    setCurrentUser(userWithUpdatedClubs)
+  function handleLeaveClub(deletedSignup){
+    const updatedSignups = currentUser.signups.filter(signup => signup.id !== deletedSignup.id)
+    const userWithUpdatedSignups = {...currentUser, signups: updatedSignups}
+    setCurrentUser(userWithUpdatedSignups)
   }
 
   return (

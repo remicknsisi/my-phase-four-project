@@ -5,6 +5,7 @@ import Filter from "./Filter.js";
 import Sort from "./Sort.js";
 
 function DisplayUsers ({ inStudents, students, teachers, selectedHouse, onNewSelection, onCheck, isChecked }) {
+
     return (
         <div>
             {inStudents ? 

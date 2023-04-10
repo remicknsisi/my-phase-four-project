@@ -1,6 +1,6 @@
 class ExtracurricularsController < ApplicationController
     def index
         extracurriculars = Extracurricular.all
-        render json: extracurriculars, include: :students
+        render json: extracurriculars
     end
 end

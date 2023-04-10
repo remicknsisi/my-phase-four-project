@@ -33,6 +33,10 @@ function Dashboard () {
                     <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}/extracurriculars`)}>
                         My Extracurriculars
                     </button>
+                    {/* add start a club option here */}
+                    <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}`)}>
+                        Edit My Profile
+                    </button>
                 </div>
             </div>
         )

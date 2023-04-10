@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
     def create
-        student = Student.find_by(id: params[:student_id])
-        review = student.reviews.create(review_params)
+        review = @student.reviews.create(review_params)
         if review.valid?
             render json: review, status: :created
         else

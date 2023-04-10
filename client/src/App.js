@@ -9,8 +9,9 @@ import DisplayReviews from "./components/DisplayReviews.js";
 import NewReviewForm from "./components/NewReviewForm.js";
 import DisplayExtracurriculars from "./components/DisplayExtracurriculars.js";
 import { StudentProvider } from "./context/StudentProvider.js"
-import Signup from "./components/Signup.js"
+import CreateAccount from "./components/CreateAccount.js"
 import Letter from "./components/Letter.js"
+import EditProfileForm from "./components/EditProfileForm";
 
 function App() {
   const [students, setStudents] = useState([])
@@ -45,7 +46,15 @@ function App() {
 
   function handleCheck(){
     setIsChecked(!isChecked)
+
+    // if (isChecked){
+    //   setTeachers(sortedTeachers)
+    // } else {
+    //   setTeachers(unsortedTeachers)
+    // }
+    // need to sort out this logic here
   }
+  const sortedTeachers = [...teachers].sort((teacherA, teacherB) => ((teacherA.average_rating < teacherB.average_rating) ? 1 : ((teacherB.average_rating < teacherA.average_rating) ? -1 : 0)))
 
   const studentsToDisplay = students.filter(student => {
     if (selectedHouse === "All") return true;
@@ -65,7 +74,7 @@ function App() {
         <Nav/>
         <Routes>
           <Route path="/" element={<Dashboard/>}/>
-          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/createaccount" element={<CreateAccount/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
           <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false} onCheck={handleCheck} isChecked={isChecked}/>} /> 
@@ -73,6 +82,7 @@ function App() {
           {/* make it so you cant see the leave this club button on this page - just number of members */}
           <Route path="/teachers/:id" element={<TeacherDetails teachers={teachers}/>} /> 
           {/* need to make it so cant delete off a teacher page and so you can only delete your own */}
+          <Route path="/students/:id" element={<EditProfileForm students={students}/>} /> 
           <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars inStudents={true}/>}/>
           <Route path="/students/:student_id/reviews" element={<DisplayReviews students={students}/>}/>
           <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers}/>}/>
