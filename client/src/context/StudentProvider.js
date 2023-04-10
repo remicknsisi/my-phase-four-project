@@ -37,9 +37,14 @@ const StudentProvider = ({ children }) => {
     const userWithUpdatedSignups = {...currentUser, signups: updatedSignups}
     setCurrentUser(userWithUpdatedSignups)
   }
+  function handleJoinClub(newSignup){
+    const studentUpdatedSignups = [...currentUser.signups, newSignup]
+    const updatedStudent = {...currentUser, signups: studentUpdatedSignups}
+    setCurrentUser(updatedStudent)
+  }
 
   return (
-    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview, handleLeaveClub}}>
+    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview, handleLeaveClub, handleJoinClub}}>
       {children}
     </StudentContext.Provider>
   )
