@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
     wrap_parameters :student, include: [:password, :password_confirmation]
     # do i need this line above
     skip_before_action :authorized, only: :create
+    skip_before_action :current_user, only: :create
 
     def index
         students = Student.all
@@ -23,7 +24,6 @@ class StudentsController < ApplicationController
         if student.valid?
             session[:user_id] = student.id
             render json: student, status: :created
-            # user ID should not come through params
         else
             render json: { errors: student.errors.full_messages }, status: :unprocessable_entity
         end

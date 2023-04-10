@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Review from "./Review.js"
 
-function TeacherDetails ({ teachers }) {
+function TeacherDetails () {
     const [teacher, setTeacher] = useState({})
     const { id } = useParams()
 
@@ -23,7 +23,7 @@ function TeacherDetails ({ teachers }) {
                 {teacher.classes}
             <br/><br/><br/>
             <h2 className='dashboard-title'>Hear from other Students</h2>
-                {teacher.id ? teacher.reviews.map(review => <Review review={review} key={review.id} teachers={teachers} students={teacher.students}/>)  : null}
+                {teacher.id ? teacher.reviews.map(review => <Review review={review} key={review.id}/>)  : null}
         </div>
     )
 }

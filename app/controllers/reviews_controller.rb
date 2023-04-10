@@ -8,11 +8,14 @@ class ReviewsController < ApplicationController
         end
     end
 
-    # mkae it so nothing is sent back and status is appropriate, add error handling
     def destroy
         review = Review.find_by(id: params[:id])
-        review.destroy
-        render json: review
+        if @student && @student.id == review.student_id
+            review.destroy
+            render json: review
+        else
+            render json: { error: "Only authors may delete their own reviews" }, status: :unauthorized
+        end
     end
 
     private

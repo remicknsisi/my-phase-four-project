@@ -6,4 +6,12 @@ class Review < ApplicationRecord
 
     belongs_to :student
     belongs_to :teacher
+
+    def author
+        author = self.student
+    end
+
+    def subject
+        subject = self.teacher
+    end
 end
