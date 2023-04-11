@@ -4,6 +4,7 @@ import { StudentContext } from "../context/StudentProvider.js";
 
 function DisplayExtracurriculars ({ inStudents }) {
     const { currentUser } = useContext(StudentContext)
+    const [student, setStudent] = useState(currentUser)
     const [extracurriculars, setExtracurriculars] = useState([])
 
     useEffect(() => {
@@ -16,6 +17,7 @@ function DisplayExtracurriculars ({ inStudents }) {
           }})
       }, [])
 
+    if (currentUser){
     return (
         <div className="cards-header">
             {inStudents ? 
@@ -30,7 +32,11 @@ function DisplayExtracurriculars ({ inStudents }) {
                 </>
             }
         </div>
-    )
+    )} else {
+        return (
+            <div>null</div>
+        )
+    }
 }
 
 export default DisplayExtracurriculars;

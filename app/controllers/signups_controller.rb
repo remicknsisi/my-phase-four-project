@@ -1,8 +1,12 @@
 class SignupsController < ApplicationController
     def destroy
         signup = Signup.find_by(id: params[:id])
-        signup.destroy
-        render json: signup
+        if signup
+            signup.destroy
+            head :no_content
+        else
+            render json: {error: "Couldn't find signup"}
+        end
     end
 
     def create
@@ -13,7 +17,6 @@ class SignupsController < ApplicationController
             render json: { errors: signup.errors.full_messages }, status: :unprocessable_entity
         end
     end
-# make it so that there is no response
 
     private
     def signup_params

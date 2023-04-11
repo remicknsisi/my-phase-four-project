@@ -46,7 +46,6 @@ function App() {
 
   function handleCheck(){
     setIsChecked(!isChecked)
-
     // if (isChecked){
     //   setTeachers(sortedTeachers)
     // } else {
@@ -55,6 +54,8 @@ function App() {
     // need to sort out this logic here
   }
   const sortedTeachers = [...teachers].sort((teacherA, teacherB) => ((teacherA.average_rating < teacherB.average_rating) ? 1 : ((teacherB.average_rating < teacherA.average_rating) ? -1 : 0)))
+
+  const teachersToDisplay = isChecked ? sortedTeachers : teachers
 
   const studentsToDisplay = students.filter(student => {
     if (selectedHouse === "All") return true;
@@ -77,7 +78,7 @@ function App() {
           <Route path="/createaccount" element={<CreateAccount/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/students" element={<DisplayUsers onNewSelection={handleNewSelection} selectedHouse={selectedHouse} students={studentsToDisplay} inStudents={true}/>} />   
-          <Route path="/teachers" element={<DisplayUsers teachers={teachers} inStudents={false} onCheck={handleCheck} isChecked={isChecked}/>} /> 
+          <Route path="/teachers" element={<DisplayUsers teachers={teachersToDisplay} inStudents={false} onCheck={handleCheck} isChecked={isChecked}/>} /> 
           <Route path="/extracurriculars" element={<DisplayExtracurriculars inStudents={false}/>}/>
           <Route path="/teachers/:id" element={<TeacherDetails/>} /> 
           <Route path="/students/:id" element={<EditProfileForm students={students}/>} /> 

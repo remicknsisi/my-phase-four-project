@@ -6,6 +6,7 @@ function Dashboard () {
     const { currentUser } = useContext(StudentContext)
     const navigate = useNavigate()
 
+    if (currentUser){
         return (
             <div className="home">
                 <h1 className='dashboard-title'>Welcome to Hogwarts, {currentUser.name}</h1>
@@ -31,7 +32,11 @@ function Dashboard () {
                     </button>
                 </div>
             </div>
-        )
+        )} else{
+            return (
+                <div>null</div>
+            )
+        }
 }
 
 export default Dashboard;
