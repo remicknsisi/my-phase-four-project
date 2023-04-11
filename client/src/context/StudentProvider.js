@@ -25,10 +25,7 @@ const StudentProvider = ({ children }) => {
     const studentUpdatedReviews = [...currentUser.reviews, newReview]
     const updatedStudent = {...currentUser, reviews: studentUpdatedReviews}
     setCurrentUser(updatedStudent)
-    navigate(`/students/${updatedStudent.id}/reviews`)
-    // be consistent with where the nav logic is - next 3 functions handle in other components
   }
-
   function handleDeleteReview(deletedReview){
     const updatedReviews = currentUser.reviews.filter(review => review.id !== deletedReview.id)
     const userWithUpdatedReviews = {...currentUser, reviews: updatedReviews}

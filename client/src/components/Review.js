@@ -1,22 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StudentContext } from "../context/StudentProvider.js";
 
 function Review ({ review }) {
+    const [error, setError] = useState('')
     const { comment, rating, id, author, subject } = review
     const { currentUser, handleDeleteReview } = useContext(StudentContext)
 
     function onDelete(){
         fetch(`/reviews/${id}`, {
-            method: 'DELETE'})
-          .then(res => res.json())
+            method: 'DELETE',
+            headers: {"Content-Type": "application/json"}})
           .then(res => {
             if (res.ok){
-                res.json().then(deletedReview => handleDeleteReview(deletedReview))
+                res.json()
+                .then(deletedReview => handleDeleteReview(deletedReview))
             } else {
-                res.json().then(message => {
-                    const errorLis = message.errors
-                    console.log(errorLis)
-                    // setErrorsList(errorLis)
+                res.json()
+                .then(message => {
+                    const errorMessage = message.error
+                    setError(errorMessage)
                 })
         }})
     }
@@ -28,6 +30,7 @@ function Review ({ review }) {
                 <p>{comment}</p>
                 <p>Posted by {author.name}</p>
                 <button onClick={() => onDelete()}>Delete Review</button>
+                <p className="error-message">{error}</p>
             </div>
         )
     } else {

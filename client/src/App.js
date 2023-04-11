@@ -46,13 +46,8 @@ function App() {
 
   function handleCheck(){
     setIsChecked(!isChecked)
-    // if (isChecked){
-    //   setTeachers(sortedTeachers)
-    // } else {
-    //   setTeachers(unsortedTeachers)
-    // }
-    // need to sort out this logic here
   }
+  
   const sortedTeachers = [...teachers].sort((teacherA, teacherB) => ((teacherA.average_rating < teacherB.average_rating) ? 1 : ((teacherB.average_rating < teacherA.average_rating) ? -1 : 0)))
 
   const teachersToDisplay = isChecked ? sortedTeachers : teachers

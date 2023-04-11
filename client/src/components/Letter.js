@@ -5,6 +5,7 @@ function Letter () {
     const { currentUser } = useContext(StudentContext)
     const [isPageOne, setIsPageOne] = useState(true)
 
+    if (currentUser){
     if (!isPageOne){
         return (
             <div className="letter">
@@ -109,6 +110,10 @@ function Letter () {
                 </p>
                 <button onClick={() => setIsPageOne(false)}>See Page 2</button>
             </div>
+        )
+    }} else{
+        return (
+            <div>null</div>
         )
     }
 }
