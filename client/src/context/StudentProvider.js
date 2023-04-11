@@ -26,6 +26,7 @@ const StudentProvider = ({ children }) => {
     const updatedStudent = {...currentUser, reviews: studentUpdatedReviews}
     setCurrentUser(updatedStudent)
     navigate(`/students/${updatedStudent.id}/reviews`)
+    // be consistent with where the nav logic is - next 3 functions handle in other components
   }
   function handleDeleteReview(deletedReview){
     const updatedReviews = currentUser.reviews.filter(review => review.id !== deletedReview.id)
@@ -41,10 +42,14 @@ const StudentProvider = ({ children }) => {
     const studentUpdatedSignups = [...currentUser.signups, newSignup]
     const updatedStudent = {...currentUser, signups: studentUpdatedSignups}
     setCurrentUser(updatedStudent)
+    // navigate(`/students/${currentUser.id}/extracurriculars`)
+  }
+  function handleEditStudent(updatedStudent){
+    setCurrentUser(updatedStudent)
   }
 
   return (
-    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview, handleLeaveClub, handleJoinClub}}>
+    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview, handleEditStudent, handleLeaveClub, handleJoinClub}}>
       {children}
     </StudentContext.Provider>
   )

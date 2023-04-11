@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 function EditProfileForm () {
     // add error handling to this form 
-    const { currentUser } = useContext(StudentContext)
-    const { year, name, house, image, id } = currentUser
+    const { currentUser, handleEditStudent } = useContext(StudentContext)
+    const [student, setStudent] = useState(currentUser)
+
+    const { year, name, house, image, id } = student
 
     const [newName, setNewName] = useState(name)
     const [newYear, setNewYear] = useState(year)
@@ -13,27 +15,24 @@ function EditProfileForm () {
     const [newHouse, setNewHouse] = useState(house)
     const navigate = useNavigate()
 
-    function handleEditProfile(){
-        console.log({
-            name: newName,
-            year: newYear,
-            image: newImage,
-            house: newHouse,
-        })
-        // fetch(`/students/${id}`, {
-        //     method: 'PATCH',
-        //     headers: {"Content-Type": "application/json"},
-        //     body: JSON.stringify({
-        //         name: newName,
-        //         year: newYear,
-        //         image: newImage,
-        //         house: newHouse,
-        //      })
-        //    })
-        //    .then(res => res.json())
-        //    .then(updatedStudent => {
-        //     console.log(updatedStudent)
-        //     navigate('/')})
+
+    function handleEditProfile(e){
+        e.preventDefault()
+
+        fetch(`/students/${id}`, {
+            method: 'PATCH',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                name: newName,
+                year: newYear,
+                image: newImage,
+                house: newHouse,
+             })
+           })
+           .then(res => res.json())
+           .then(updatedStudent => {
+            handleEditStudent(updatedStudent)
+            navigate('/')})
     }
 
     return (

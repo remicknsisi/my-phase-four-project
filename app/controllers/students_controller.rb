@@ -31,8 +31,8 @@ class StudentsController < ApplicationController
 
     def update
         if @student
-            student.update(params)
-            render json: student
+            @student.update(student_params)
+            render json: @student
         else
             render json: { errors: student.errors.full_messages }, status: :unprocessable_entity
         end
