@@ -37,29 +37,10 @@ const StudentProvider = ({ children }) => {
     const userWithUpdatedSignups = {...currentUser, signups: updatedSignups}
     setCurrentUser(userWithUpdatedSignups)
   }
-  function handleJoinClub(id){
-    fetch(`/signups`, {
-          method: 'POST',
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(
-              {extracurricular_id: id}
-          )
-    })
-    .then(res => {
-      if (res.ok){
-        res.json().then((newSignup) => {
-          const studentUpdatedSignups = [...currentUser.signups, newSignup]
-          const updatedStudent = {...currentUser, signups: studentUpdatedSignups}
-          setCurrentUser(updatedStudent)
-          navigate(`/students/${currentUser.id}/extracurriculars`)}
-      )}
-      else {
-        res.json().then(message => {
-        const errorLis = message.errors
-        console.log(errorLis)}
-        // setErrorsList(errorLis) an dmove this back into EC componenet
-      )}
-    })
+  function handleJoinClub(newSignup){
+    const studentUpdatedSignups = [...currentUser.signups, newSignup]
+    const updatedStudent = {...currentUser, signups: studentUpdatedSignups}
+    setCurrentUser(updatedStudent)
   }
 
   function handleEditStudent(updatedStudent){
