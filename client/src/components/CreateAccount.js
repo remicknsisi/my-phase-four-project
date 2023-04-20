@@ -18,7 +18,7 @@ function CreateAccount (){
     function handleSubmit(e){
         e.preventDefault()
 
-        fetch('/signup', {
+        fetch('/createaccount', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({

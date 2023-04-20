@@ -39,6 +39,15 @@ class StudentsController < ApplicationController
         end
     end
 
+    def destroy
+        if @student
+            @student.destroy
+            head :no_content
+        else
+            render json: { error: "You may only delete your own account!" }, status: :unauthorized
+        end
+    end
+
     private
 
     def student_params

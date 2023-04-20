@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :extracurriculars, only: [:index]
   resources :reviews, only: [:create, :destroy]
   resources :teachers, only: [:index, :show]
-  resources :students, only: [:index, :show, :create, :update]
+  resources :students, only: [:index, :show, :create, :update, :destroy]
   # do
   #   resources :reviews, only: [:create, :destroy]
   # end

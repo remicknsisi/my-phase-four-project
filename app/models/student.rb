@@ -18,7 +18,4 @@ class Student < ApplicationRecord
     has_many :signups, dependent: :destroy
     has_many :extracurriculars, through: :signups
     has_many :teachers, through: :reviews  
-
-    # validates :signups, uniqueness: true
-    # validates :extracurriculars, uniqueness: true
 end

@@ -46,9 +46,18 @@ const StudentProvider = ({ children }) => {
   function handleEditStudent(updatedStudent){
     setCurrentUser(updatedStudent)
   }
+  function handleDeleteAccount(){
+    fetch(`/students/${currentUser.id}`, {
+      method: 'DELETE',
+      headers: {"Content-Type": "application/json"}})
+    .then(() => {
+      navigate(`/login}`)
+      setCurrentUser(null)
+      })
+  }
 
   return (
-    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview, handleEditStudent, handleLeaveClub, handleJoinClub}}>
+    <StudentContext.Provider value={{currentUser, login, logout, signup, handleDeleteReview, handleSubmitReview, handleEditStudent, handleLeaveClub, handleJoinClub, handleDeleteAccount}}>
       {children}
     </StudentContext.Provider>
   )

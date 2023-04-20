@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { StudentContext } from "../context/StudentProvider.js";
 
 function Dashboard () {
-    const { currentUser } = useContext(StudentContext)
+    const { currentUser, handleDeleteAccount } = useContext(StudentContext)
     const navigate = useNavigate()
 
     if (currentUser){
@@ -28,6 +28,9 @@ function Dashboard () {
                     </button>
                     <button className="dashboard-tiles" onClick={() => navigate(`/students/${currentUser.id}`)}>
                         Edit My Profile
+                    </button>
+                    <button className="dashboard-tiles" onClick={() => handleDeleteAccount()}>
+                        Delete My Account
                     </button>
                 </div>
             </div>
