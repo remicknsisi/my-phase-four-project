@@ -7,7 +7,6 @@ function NewReviewForm ({ teachers }) {
     const [newRating, setNewRating] = useState()
     const [newTeacherId, setNewTeacherId] = useState()
     const [errorsList, setErrorsList] = useState([])
-    // set default values for these to avoid breaking - or validations in back end!!
     const { handleSubmitReview } = useContext(StudentContext)
     const { student_id } = useParams()
     const navigate = useNavigate()

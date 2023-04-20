@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create, :destroy]
   resources :teachers, only: [:index, :show]
   resources :students, only: [:index, :show, :create, :update]
+  # do
+  #   resources :reviews, only: [:create, :destroy]
+  # end
   resources :signups, only: [:destroy, :create]
 
   post "/students/:student_id/reviews", to: "reviews#create"
-  # does this need to be nested above?
+  # # does this need to be nested above? - yes bc we can only create and destroy within the context of a logged in student
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "students#show"

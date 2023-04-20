@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
+  # wrap_parameters format: [] - do i want to add this here? test to see if it breaks anything
   before_action :authorized, :current_user
 
   def authorized

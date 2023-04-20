@@ -32,17 +32,10 @@ const StudentProvider = ({ children }) => {
     setCurrentUser(userWithUpdatedReviews)
   }
 
-  function handleLeaveClub(id){
-    const deletedSignup = currentUser.signups.find(signup => signup.extracurricular_id === id)
-    fetch(`/signups/${deletedSignup.id}`, {
-        method: 'DELETE',
-        headers: {"Content-Type": "application/json"}
-      })
-      .then(() => {
-          const updatedSignups = currentUser.signups.filter(signup => signup.id !== deletedSignup.id)
-          const userWithUpdatedSignups = {...currentUser, signups: updatedSignups}
-          setCurrentUser(userWithUpdatedSignups)
-      })
+  function handleLeaveClub(deletedSignup){
+    const updatedSignups = currentUser.signups.filter(signup => signup.id !== deletedSignup.id)
+    const userWithUpdatedSignups = {...currentUser, signups: updatedSignups}
+    setCurrentUser(userWithUpdatedSignups)
   }
   function handleJoinClub(id){
     fetch(`/signups`, {
@@ -64,7 +57,7 @@ const StudentProvider = ({ children }) => {
         res.json().then(message => {
         const errorLis = message.errors
         console.log(errorLis)}
-        // setErrorsList(errorLis)
+        // setErrorsList(errorLis) an dmove this back into EC componenet
       )}
     })
   }

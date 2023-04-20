@@ -7,13 +7,14 @@ function Extracurricular ({ extracurricular, allExtracurriculars }) {
     const { handleLeaveClub, currentUser, handleJoinClub } = useContext(StudentContext)
     const navigate = useNavigate()
 
-    // function onLeaveClub(){
-    //     const deletedSignup = currentUser.signups.find(signup => signup.extracurricular_id === id)
-    //     fetch(`/signups/${deletedSignup.id}`, {
-    //         method: 'DELETE'})
-    //       .then(res => res.json())
-    //       .then(deletedSignup => handleLeaveClub(deletedSignup))
-    //     }
+    function onLeaveClub(){
+        const deletedSignup = currentUser.signups.find(signup => signup.extracurricular_id === id)
+        fetch(`/signups/${deletedSignup.id}`, {
+            method: 'DELETE',
+            headers: {"Content-Type": "application/json"}})
+          .then(res => res.json())
+          .then(deletedSignup => handleLeaveClub(deletedSignup))
+    }
 
 
     // function onJoinClub(){
@@ -44,7 +45,7 @@ function Extracurricular ({ extracurricular, allExtracurriculars }) {
             <img alt="club" className="club-img" src={image}/>
             <h3>About: {name}</h3>
             <p>{about}</p>
-            {allExtracurriculars ? <button onClick={() => handleJoinClub(extracurricular.id)}>Join this Club</button> : <button onClick={() => handleLeaveClub(extracurricular.id)}>Leave this Club</button>}
+            {allExtracurriculars ? <button onClick={() => handleJoinClub(extracurricular.id)}>Join this Club</button> : <button onClick={onLeaveClub}>Leave this Club</button>}
         </div>
     )
 }

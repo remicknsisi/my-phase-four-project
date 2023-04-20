@@ -1,9 +1,9 @@
 class SignupsController < ApplicationController
     def destroy
         signup = Signup.find_by(id: params[:id])
-        if signup
+        if @student && @student.id == signup.student_id
             signup.destroy
-            head :no_content
+            render json: signup
         else
             render json: {error: "Couldn't find signup"}
         end

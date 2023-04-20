@@ -17,6 +17,8 @@ class Student < ApplicationRecord
     has_many :reviews, dependent: :destroy
     has_many :signups, dependent: :destroy
     has_many :extracurriculars, through: :signups
-    has_many :teachers, through: :reviews
-      # add dependency here for reviews delete
+    has_many :teachers, through: :reviews  
+
+    # validates :signups, uniqueness: true
+    # validates :extracurriculars, uniqueness: true
 end
