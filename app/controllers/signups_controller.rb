@@ -10,8 +10,9 @@ class SignupsController < ApplicationController
     end
 
     def create
-        signup = @student.signups.create(signup_params)
+        signup = @student.signups.new(signup_params)
         if signup.valid?
+            signup.save
             render json: signup, status: :created
         else
             render json: { errors: signup.errors.full_messages }, status: :unprocessable_entity
