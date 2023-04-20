@@ -16,9 +16,7 @@ const StudentProvider = ({ children }) => {
   }, [])
 
   const login = (user) => {setCurrentUser(user)}
-
   const logout = () => {setCurrentUser(null)}
-
   const signup = (newStudent) => {setCurrentUser(newStudent)}
   
   function handleSubmitReview (newReview){
@@ -51,7 +49,7 @@ const StudentProvider = ({ children }) => {
       method: 'DELETE',
       headers: {"Content-Type": "application/json"}})
     .then(() => {
-      navigate(`/login}`)
+      navigate(`/login`)
       setCurrentUser(null)
       })
   }

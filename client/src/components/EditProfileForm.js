@@ -6,6 +6,7 @@ function EditProfileForm () {
     // add error handling to this form 
     const { currentUser, handleEditStudent } = useContext(StudentContext)
     const [student, setStudent] = useState(currentUser)
+    const [errorsList, setErrorsList] = useState([])
 
     const { year, name, house, image, id } = student
 
@@ -14,7 +15,6 @@ function EditProfileForm () {
     const [newImage, setNewImage] = useState(image)
     const [newHouse, setNewHouse] = useState(house)
     const navigate = useNavigate()
-
 
     function handleEditProfile(e){
         e.preventDefault()
@@ -29,10 +29,18 @@ function EditProfileForm () {
                 house: newHouse,
              })
            })
-           .then(res => res.json())
-           .then(updatedStudent => {
-            handleEditStudent(updatedStudent)
-            navigate('/')})
+           .then(res => {
+            if(res.ok){
+                res.json().then((updatedStudent) => {
+                    handleEditStudent(updatedStudent)
+                    navigate('/')})
+            } else {
+                res.json().then((message) => {
+                    const errorLis = message.errors.map(error => <li key={error}>{error}</li>)
+                    setErrorsList(errorLis)
+                })
+            }
+        })
     }
 
     return (
@@ -68,6 +76,7 @@ function EditProfileForm () {
                 <br></br>
                 <br></br>
                 <button type="submit">Finish Editing Profile ✏️ </button>
+                <p className="error-message">{errorsList}</p>
             </form>
         </div>
     )
