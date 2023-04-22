@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-    wrap_parameters :student, include: [:password, :password_confirmation]
+    # wrap_parameters :student, include: [:password, :password_confirmation]
     # do i need this line above - it prevents the nested json object named after controller ;student
     skip_before_action :authorized, only: :create
     skip_before_action :current_user, only: :create
