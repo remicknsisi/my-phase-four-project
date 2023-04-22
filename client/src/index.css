@@ -209,3 +209,13 @@
   width: 300px;
   height: auto
 }
+
+.teacher-details-border {
+  -webkit-box-shadow: 7px 5px 7px 2px #000000; 
+  box-shadow: 7px 5px 7px 2px #000000;
+  border: 7px outset #8066FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
