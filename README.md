@@ -19,7 +19,6 @@ Thank you for reading to the end of this README - I hope you enjoy the app, and 
 
 - Ruby 2.7.4
 - NodeJS (v16), and npm
-- Render account
 - Postgresql
 
 You can use the following commands to run the application:
@@ -33,6 +32,7 @@ You can use the following commands to run the application:
 Special thank you to J.K. Rowling for creating a magical world that inspired me to build this application. As well as a thanks to the creators of Hogwarts Legacy which has placed these themes at the forefront of my mind while working through this section of the program!
 
 Images and some magical descriptions borrowed from:
+
 https://fantasytopics.com/harry-potter-characters-list/
 https://pngtree.com/freebackground/mysterious-starry-sky-background_1337171.html
 https://www.universalorlando.com/webdata/k2/en/us/files/Images/gds/ioa-frog-choir-hogwarts-2-frogs-4-students-b.jpg
