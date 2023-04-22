@@ -30,19 +30,12 @@ You can use the following commands to run the application:
 
 ## Sources
 
-Thank you JK Rowling
+Special thank you to J.K. Rowling for creating a magical world that inspired me to build this application. As well as a thanks to the creators of Hogwarts Legacy which has placed these themes at the forefront of my mind while working through this section of the program!
 
-all image-
+Images and some magical descriptions borrowed from:
 https://fantasytopics.com/harry-potter-characters-list/
-
-inspo - hogwarts legacy
-
-https://pngtree.com/freebackground/mysterious-starry-sky-background_1337171.html - background image of stars
-
-info about extracurriculars - 
-https://harrypotter.fandom.com/wiki/Quidditch?so=search
-
-addd extras image sources
+https://pngtree.com/freebackground/mysterious-starry-sky-background_1337171.html
 https://www.universalorlando.com/webdata/k2/en/us/files/Images/gds/ioa-frog-choir-hogwarts-2-frogs-4-students-b.jpg
 https://images.ctfassets.net/usf1vwtuqyxm/57P7p67jezSsST1veN1fYl/ecb885e183ff1f5418fc7b7d41c167b6/HP_F3_Prisoner_of_Azkaban_Fat_Lady_Portrait.jpg
 https://64.media.tumblr.com/61febe0acc041b844410dee8dc41869a/tumblr_pp6wuchLbM1tqfyozo1_640.jpg
+https://harrypotter.fandom.com/wiki/Quidditch?so=search
