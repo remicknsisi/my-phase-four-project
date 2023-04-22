@@ -1,5 +1,5 @@
 class StudentSerializer < ActiveModel::Serializer
-  attributes :id, :year, :house, :name, :spells, :image
+  attributes :id, :year, :house, :name, :image
 
   has_many :reviews
   has_many :signups

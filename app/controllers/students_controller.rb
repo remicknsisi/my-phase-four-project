@@ -21,12 +21,10 @@ class StudentsController < ApplicationController
 
     #signup
     def create
-        student = Student.create(student_params)
+        student = Student.create!(student_params)
         if student.valid?
             session[:user_id] = student.id
             render json: student, status: :created
-        else
-            render json: { errors: student.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
@@ -34,8 +32,6 @@ class StudentsController < ApplicationController
         if @student
             @student.update!(student_params)
             render json: @student, status: :accepted
-        # else
-        #     render json: { errors: student.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
