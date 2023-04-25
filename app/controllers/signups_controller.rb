@@ -3,9 +3,9 @@ class SignupsController < ApplicationController
         signup = Signup.find_by(id: params[:id])
         if @student && @student.id == signup.student_id
             signup.destroy
-            render json: signup
+            render json: signup, status: :ok
         else
-            render json: {error: "Couldn't find signup"}
+            render json: {error: "Couldn't find signup"}, status: :not_found
         end
     end
 

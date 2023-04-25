@@ -12,7 +12,8 @@ class ReviewsController < ApplicationController
         review = Review.find_by(id: params[:id])
         if @student && @student.id == review.student_id
             review.destroy
-            render json: review
+            render json: review, status: :ok
+            # should this be no contnet
         else
             render json: { error: "Only authors may delete their own reviews" }, status: :unauthorized
         end

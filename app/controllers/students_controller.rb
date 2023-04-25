@@ -1,7 +1,5 @@
 class StudentsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-    # wrap_parameters :student, include: [:password, :password_confirmation]
-    # do i need this line above - it prevents the nested json object named after controller ;student
     skip_before_action :authorized, only: :create
     skip_before_action :current_user, only: :create
 
@@ -31,14 +29,14 @@ class StudentsController < ApplicationController
     def update
         if @student
             @student.update!(student_params)
-            render json: @student, status: :accepted
+            render json: @student, status: :ok
         end
     end
 
     def destroy
         if @student
             @student.destroy
-            head :no_content
+            head :no_content, status: :ok
         else
             render json: { error: "You may only delete your own account!" }, status: :unauthorized
         end

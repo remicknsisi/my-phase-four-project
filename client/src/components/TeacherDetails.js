@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Review from "./Review.js"
+import Review from "./Review.js";
+import { StudentContext } from "../context/StudentProvider.js";
 
 function TeacherDetails () {
     const [teacher, setTeacher] = useState({})
     const { id } = useParams()
+    const { currentUser } = useContext(StudentContext)
 
     useEffect(() => {
         fetch(`/teachers/${id}`)
@@ -12,6 +14,7 @@ function TeacherDetails () {
         .then(teacherData => setTeacher(teacherData))
     }, []) 
 
+    if (currentUser) {
     return (
         <div className="card-details">
             <div className="teacher-details-border">
@@ -24,9 +27,14 @@ function TeacherDetails () {
             </div>
             <br/><br/><br/>
             <h2 className='dashboard-title'>Hear from other Students</h2>
-                {teacher.id ? teacher.reviews.map(review => <Review review={review} key={review.id}/>)  : null}
+                    {teacher.id ? teacher.reviews.map(review => <Review review={review} key={review.id}/>)  : null}
         </div>
-    )
+    );
+    } else {
+        return(
+        <div>{null}</div>
+        )
+    }
 }
 
 export default TeacherDetails;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { StudentContext } from "../context/StudentProvider.js";
 
 function Extracurricular ({ extracurricular, allExtracurriculars }) {
-    const { name, image, about, number_of_members, id } = extracurricular
+    const { name, image, about, id } = extracurricular
     const { handleLeaveClub, currentUser, handleJoinClub } = useContext(StudentContext)
     const [errorsList, setErrorsList] = useState('')
     const navigate = useNavigate()
@@ -44,7 +44,7 @@ function Extracurricular ({ extracurricular, allExtracurriculars }) {
             <img alt="club" className="club-img" src={image}/>
             <h3>About: {name}</h3>
             <p>{about}</p>
-            {allExtracurriculars ? <button onClick={() => onJoinClub()}>Join this Club</button> : <button onClick={onLeaveClub}>Leave this Club</button>}
+            {allExtracurriculars ? <button onClick={onJoinClub}>Join this Club</button> : <button onClick={onLeaveClub}>Leave this Club</button>}
             {Boolean(errorsList) ? <p className="error-message">**{errorsList}**</p> : null}
         </div>
     )

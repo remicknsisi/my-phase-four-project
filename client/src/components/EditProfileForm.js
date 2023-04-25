@@ -8,6 +8,8 @@ function EditProfileForm () {
     const [student, setStudent] = useState(currentUser)
     const [errorsList, setErrorsList] = useState([])
 
+    console.log(student, currentUser)
+
     const { year, name, house, image, id } = student
 
     const [newName, setNewName] = useState(name)
