@@ -18,9 +18,6 @@ function DisplayExtracurriculars ({ inStudents }) {
           }})
       }, [])
 
-    //   console.log(currentUser.extracurriculars)
-      console.log(currentUser)
-
     if (currentUser){
     return (
         <div className="cards-header">

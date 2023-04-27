@@ -31,13 +31,10 @@ const StudentProvider = ({ children }) => {
   }
 
   function handleLeaveClub(deletedSignup){
-    //could manually remove extracurricular as well here
     const updatedSignups = currentUser.signups.filter(signup => signup.id !== deletedSignup.id)
-    const userWithUpdatedSignups = {...currentUser, signups: updatedSignups}
-    console.log('updatedsignups', userWithUpdatedSignups)
-    console.log('currentUser', currentUser)
-
-    setCurrentUser(userWithUpdatedSignups)
+    const updatedExtracurriculars = currentUser.extracurriculars.filter(extracurricular => extracurricular.id !== deletedSignup.extracurricular_id)
+    const updatedUser = {...currentUser, signups: updatedSignups, extracurriculars: updatedExtracurriculars}
+    setCurrentUser(updatedUser)
   }
   function handleJoinClub(newSignup){
     const studentUpdatedSignups = [...currentUser.signups, newSignup]

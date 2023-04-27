@@ -70,8 +70,8 @@ function EditProfileForm () {
                 <select value={currentUser.year} className="review-input" type="number" onChange={e => setNewYear(e.target.value)}>
                     <option value='1'>1</option>
                     {/* //test out these as strings */}
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
                     <option value={4}>4</option>
                     <option value={5}>5</option>
                     <option value={6}>6</option>
