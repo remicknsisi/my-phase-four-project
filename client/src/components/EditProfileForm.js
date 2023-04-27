@@ -1,22 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StudentContext } from "../context/StudentProvider.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function EditProfileForm () {
     // add error handling to this form 
     const { currentUser, handleEditStudent } = useContext(StudentContext)
-    const [student, setStudent] = useState(currentUser)
     const [errorsList, setErrorsList] = useState([])
-
-    console.log(student, currentUser)
-
-    const { year, name, house, image, id } = student
-
-    const [newName, setNewName] = useState(name)
-    const [newYear, setNewYear] = useState(year)
-    const [newImage, setNewImage] = useState(image)
-    const [newHouse, setNewHouse] = useState(house)
+    const { id } = useParams()
+    const [newName, setNewName] = useState('')
+    const [newYear, setNewYear] = useState(1)
+    const [newImage, setNewImage] = useState('')
+    const [newHouse, setNewHouse] = useState('')
     const navigate = useNavigate()
+
+    useEffect(() => {
+        setNewName(currentUser.name)
+        setNewYear(currentUser.year)
+        setNewImage(currentUser.image)
+        setNewHouse(currentUser.house)
+    }, [currentUser])
 
     function handleEditProfile(e){
         e.preventDefault()
@@ -45,6 +47,7 @@ function EditProfileForm () {
         })
     }
 
+    if (currentUser) {
     return (
         <div className="review-container">
             <h2>Edit Profile: </h2>
@@ -57,7 +60,6 @@ function EditProfileForm () {
                 <br></br>
                 <label>Edit House: </label>
                 <select className="review-input" onChange={e => setNewHouse(e.target.value)}>
-                    <option>Choose a House</option>
                     <option value="Gryffindor">Gryffindor</option>
                     <option value="Slytherin">Slytherin</option>
                     <option value="Ravenclaw">Ravenclaw</option>
@@ -65,9 +67,9 @@ function EditProfileForm () {
                 </select>
                 <br/>
                 <label>Edit Year: </label>
-                <select className="review-input" type="number" onChange={e => setNewYear(e.target.value)}>
-                    <option>Choose a Year</option>
-                    <option value={1}>1</option>
+                <select value={currentUser.year} className="review-input" type="number" onChange={e => setNewYear(e.target.value)}>
+                    <option value='1'>1</option>
+                    {/* //test out these as strings */}
                     <option value={2}>2</option>
                     <option value={3}>3</option>
                     <option value={4}>4</option>
@@ -82,6 +84,11 @@ function EditProfileForm () {
             </form>
         </div>
     )
+    } else {
+        return(
+            <div>{null}</div>
+        )
+    }
 }
 
 export default EditProfileForm;

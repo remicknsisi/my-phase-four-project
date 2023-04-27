@@ -14,7 +14,6 @@ const StudentProvider = ({ children }) => {
       res.json().then((user) => setCurrentUser(user))
     }})
   }, [])
-  // adding this value to the dependency array helps update in real time but it makes my terminal run infinitely [currentUser]
 
   const login = (user) => {setCurrentUser(user)}
   const logout = () => {setCurrentUser(null)}
@@ -32,14 +31,18 @@ const StudentProvider = ({ children }) => {
   }
 
   function handleLeaveClub(deletedSignup){
-    // const updatedSignups = currentUser.signups.filter(signup => signup.id !== deletedSignup.id)
-    // const userWithUpdatedSignups = {...currentUser, signups: updatedSignups}
-    // setCurrentUser(userWithUpdatedSignups)
+    //could manually remove extracurricular as well here
+    const updatedSignups = currentUser.signups.filter(signup => signup.id !== deletedSignup.id)
+    const userWithUpdatedSignups = {...currentUser, signups: updatedSignups}
+    console.log('updatedsignups', userWithUpdatedSignups)
+    console.log('currentUser', currentUser)
+
+    setCurrentUser(userWithUpdatedSignups)
   }
   function handleJoinClub(newSignup){
-    // const studentUpdatedSignups = [...currentUser.signups, newSignup]
-    // const updatedStudent = {...currentUser, signups: studentUpdatedSignups}
-    // setCurrentUser(updatedStudent)
+    const studentUpdatedSignups = [...currentUser.signups, newSignup]
+    const updatedStudent = {...currentUser, signups: studentUpdatedSignups}
+    setCurrentUser(updatedStudent)
   }
 
   function handleEditStudent(updatedStudent){
