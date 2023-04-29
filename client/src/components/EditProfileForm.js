@@ -53,13 +53,12 @@ function EditProfileForm () {
             <form onSubmit={handleEditProfile} className="review-form">
                 <label>Edit Full Name: </label>
                 <input className="review-input" type="text" onChange={(e) => setNewName(e.target.value)} value={newName} placeholder="Full Name" />
-                {/* fix this value issue */}
                 <br></br>
                 <label>Edit Image URL: </label>
-                <input className="review-input" type="text" onChange={(e) => setNewImage(e.target.value)} value={currentUser.image} placeholder="Image URL" />
+                <input className="review-input" type="text" onChange={(e) => setNewImage(e.target.value)} value={newImage} placeholder="Image URL" />
                 <br></br>
                 <label>Edit House: </label>
-                <select value={currentUser.house} className="review-input" onChange={e => setNewHouse(e.target.value)}>
+                <select value={newHouse} className="review-input" onChange={e => setNewHouse(e.target.value)}>
                     <option value="Gryffindor">Gryffindor</option>
                     <option value="Slytherin">Slytherin</option>
                     <option value="Ravenclaw">Ravenclaw</option>
@@ -67,7 +66,7 @@ function EditProfileForm () {
                 </select>
                 <br/>
                 <label>Edit Year: </label>
-                <select value={currentUser.year} className="review-input" type="number" onChange={e => setNewYear(e.target.value)}>
+                <select value={newYear} className="review-input" type="number" onChange={e => setNewYear(e.target.value)}>
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>

@@ -4,8 +4,6 @@ import { StudentContext } from "../context/StudentProvider.js";
 
 function DisplayExtracurriculars ({ inStudents }) {
     const { currentUser } = useContext(StudentContext)
-    const [student, setStudent] = useState(currentUser)
-    //do i need this line 7
     const [extracurriculars, setExtracurriculars] = useState([])
 
     useEffect(() => {

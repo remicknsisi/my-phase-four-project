@@ -7,12 +7,14 @@ function NewReviewForm ({ teachers }) {
     const [newRating, setNewRating] = useState()
     const [newTeacherId, setNewTeacherId] = useState()
     const [errorsList, setErrorsList] = useState([])
-    const { handleSubmitReview } = useContext(StudentContext)
+    const { handleSubmitReview, currentUser } = useContext(StudentContext)
     const { student_id } = useParams()
     const navigate = useNavigate()
 
+    console.log(currentUser.teachers)
+
     const teacherOptions = teachers.map(teacher => <option value={teacher.id} key={teacher.id}>{teacher.name}</option>)
-//instead of passing down teachers here can i use the teachers method on current user?
+    
     function onSubmitReview(e){
         e.preventDefault()
 
