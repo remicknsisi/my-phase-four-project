@@ -22,8 +22,6 @@ function Review ({ review }) {
                 })
         }})
     }
-
-    //be consistent iwth these ifs  - do we need on all
     
     if (currentUser){
         return (

@@ -11,10 +11,8 @@ function NewReviewForm ({ teachers }) {
     const { student_id } = useParams()
     const navigate = useNavigate()
 
-    console.log(currentUser.teachers)
-
     const teacherOptions = teachers.map(teacher => <option value={teacher.id} key={teacher.id}>{teacher.name}</option>)
-    
+
     function onSubmitReview(e){
         e.preventDefault()
 
