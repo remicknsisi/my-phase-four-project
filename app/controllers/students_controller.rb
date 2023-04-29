@@ -30,6 +30,8 @@ class StudentsController < ApplicationController
         if @student
             @student.update!(student_params)
             render json: @student, status: :ok
+        else
+            render json: {error: "You must be logged in to update your profile!"}, status: :unprocessable_entity
         end
     end
 

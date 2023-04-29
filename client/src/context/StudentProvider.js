@@ -36,9 +36,10 @@ const StudentProvider = ({ children }) => {
     const updatedUser = {...currentUser, signups: updatedSignups, extracurriculars: updatedExtracurriculars}
     setCurrentUser(updatedUser)
   }
-  function handleJoinClub(newSignup){
+  function handleJoinClub(newSignup, extracurricular){
     const studentUpdatedSignups = [...currentUser.signups, newSignup]
-    const updatedStudent = {...currentUser, signups: studentUpdatedSignups}
+    const studentUpdatedExtracurriculars = [...currentUser.extracurriculars, extracurricular]
+    const updatedStudent = {...currentUser, signups: studentUpdatedSignups, extracurriculars: studentUpdatedExtracurriculars}
     setCurrentUser(updatedStudent)
   }
 

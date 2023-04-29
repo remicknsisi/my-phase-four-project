@@ -28,7 +28,7 @@ function Extracurricular ({ extracurricular, allExtracurriculars }) {
         .then(res => {
         if (res.ok){
           res.json().then((newSignup) => { 
-            handleJoinClub(newSignup)
+            handleJoinClub(newSignup, extracurricular)
             navigate(`/students/${currentUser.id}/extracurriculars`)}
             )}
         else {
