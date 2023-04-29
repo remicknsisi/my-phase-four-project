@@ -52,7 +52,8 @@ function EditProfileForm () {
             <h2>Edit Profile: </h2>
             <form onSubmit={handleEditProfile} className="review-form">
                 <label>Edit Full Name: </label>
-                <input className="review-input" type="text" onChange={(e) => setNewName(e.target.value)} value={currentUser.name} placeholder="Full Name" />
+                <input className="review-input" type="text" onChange={(e) => setNewName(e.target.value)} value={newName} placeholder="Full Name" />
+                {/* fix this value issue */}
                 <br></br>
                 <label>Edit Image URL: </label>
                 <input className="review-input" type="text" onChange={(e) => setNewImage(e.target.value)} value={currentUser.image} placeholder="Image URL" />

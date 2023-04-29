@@ -12,7 +12,7 @@ function NewReviewForm ({ teachers }) {
     const navigate = useNavigate()
 
     const teacherOptions = teachers.map(teacher => <option value={teacher.id} key={teacher.id}>{teacher.name}</option>)
-
+//instead of passing down teachers here can i use the teachers method on current user?
     function onSubmitReview(e){
         e.preventDefault()
 

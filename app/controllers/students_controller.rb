@@ -28,9 +28,7 @@ class StudentsController < ApplicationController
 
     def update
         if @student
-            secret_hash = {"password"=>@student.password_digest, "password_confirmation"=>@student.password_digest, "username"=>@student.username}
-            updated_params = secret_hash.merge(student_params)
-            @student.update!(updated_params)
+            @student.update!(student_params)
             render json: @student, status: :ok
         end
     end
