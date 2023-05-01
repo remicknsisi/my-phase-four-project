@@ -7,7 +7,7 @@ function NewReviewForm ({ teachers }) {
     const [newRating, setNewRating] = useState()
     const [newTeacherId, setNewTeacherId] = useState()
     const [errorsList, setErrorsList] = useState([])
-    const { handleSubmitReview, currentUser } = useContext(StudentContext)
+    const { handleSubmitReview } = useContext(StudentContext)
     const { student_id } = useParams()
     const navigate = useNavigate()
 

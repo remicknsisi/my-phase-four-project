@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { StudentContext } from "../context/StudentProvider.js";
 import { useNavigate, useParams } from "react-router-dom";
 
-function EditProfileForm () {
+function EditProfileForm ({ setStudents, students }) {
     const { currentUser, handleEditStudent } = useContext(StudentContext)
     const [errorsList, setErrorsList] = useState([])
     const { id } = useParams()
@@ -36,6 +36,8 @@ function EditProfileForm () {
             if(res.ok){
                 res.json().then((updatedStudent) => {
                     handleEditStudent(updatedStudent)
+                    const newStudentsArray = students.map(student => student.id == updatedStudent.id ? updatedStudent : student)
+                    setStudents(newStudentsArray)
                     navigate('/')})
             } else {
                 res.json().then((message) => {

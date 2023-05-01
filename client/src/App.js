@@ -76,7 +76,7 @@ function App() {
           <Route path="/teachers" element={<DisplayUsers teachers={teachersToDisplay} inStudents={false} onCheck={handleCheck} isChecked={isChecked}/>} /> 
           <Route path="/extracurriculars" element={<DisplayExtracurriculars inStudents={false}/>}/>
           <Route path="/teachers/:id" element={<TeacherDetails/>} /> 
-          <Route path="/students/:id" element={<EditProfileForm/>} /> 
+          <Route path="/students/:id" element={<EditProfileForm setStudents={setStudents} students={students}/>} /> 
           <Route path="/students/:student_id/extracurriculars" element={<DisplayExtracurriculars inStudents={true}/>}/>
           <Route path="/students/:student_id/reviews" element={<DisplayReviews/>}/>
           <Route path="/students/:student_id/reviews/new" element={<NewReviewForm teachers={teachers}/>}/>
