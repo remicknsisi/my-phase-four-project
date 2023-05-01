@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { StudentContext } from "../context/StudentProvider.js";
 
-function Review ({ review }) {
+function Review ({ review, onDeleteReview }) {
     const [error, setError] = useState('')
     const { comment, rating, id, author, subject } = review
     const { currentUser, handleDeleteReview } = useContext(StudentContext)
@@ -13,7 +13,9 @@ function Review ({ review }) {
           .then(res => {
             if (res.ok){
                 res.json()
-                .then(deletedReview => handleDeleteReview(deletedReview))
+                .then(deletedReview => {
+                    handleDeleteReview(deletedReview)
+                    onDeleteReview(deletedReview)})
             } else {
                 res.json()
                 .then(message => {

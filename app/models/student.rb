@@ -8,6 +8,9 @@ class Student < ApplicationRecord
     validate :house_exists
     validates :year, presence: true, inclusion: { in: 1..7, message: "must be a number between 1-7" }
 
+    # line below not being used - just practicing scope for assessment
+    scope :young_students, -> { where('year < 3') }
+
     def house_exists
         if house == "Choose a House"
             errors.add(:house, "cannot be blank")

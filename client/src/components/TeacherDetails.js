@@ -14,6 +14,12 @@ function TeacherDetails () {
         .then(teacherData => setTeacher(teacherData))
     }, []) 
 
+    function handleDeleteReview(deletedReview){
+        const updatedReviews = teacher.reviews.filter(review => review.id !== deletedReview.id)
+        const teacherWithUpdatedReviews = {...teacher, reviews: updatedReviews}
+        setTeacher(teacherWithUpdatedReviews)
+    }
+
     if (currentUser) {
     return (
         <div className="card-details">
@@ -27,7 +33,7 @@ function TeacherDetails () {
             </div>
             <br/><br/><br/>
             <h2 className='dashboard-title'>Hear from other Students</h2>
-                    {teacher.id ? teacher.reviews.map(review => <Review review={review} key={review.id}/>)  : null}
+                    {teacher.id ? teacher.reviews.map(review => <Review review={review} onDeleteReview={handleDeleteReview} key={review.id}/>)  : null}
         </div>
     );
     } else {
