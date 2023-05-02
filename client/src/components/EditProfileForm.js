@@ -13,10 +13,12 @@ function EditProfileForm ({ setStudents, students }) {
     const navigate = useNavigate()
 
     useEffect(() => {
+        if (currentUser){
         setNewName(currentUser.name)
         setNewYear(currentUser.year)
         setNewImage(currentUser.image)
         setNewHouse(currentUser.house)
+    }
     }, [currentUser])
 
     function handleEditProfile(e){
@@ -36,7 +38,7 @@ function EditProfileForm ({ setStudents, students }) {
             if(res.ok){
                 res.json().then((updatedStudent) => {
                     handleEditStudent(updatedStudent)
-                    const newStudentsArray = students.map(student => student.id == updatedStudent.id ? updatedStudent : student)
+                    const newStudentsArray = students.map(student => student.id === updatedStudent.id ? updatedStudent : student)
                     setStudents(newStudentsArray)
                     navigate('/')})
             } else {
