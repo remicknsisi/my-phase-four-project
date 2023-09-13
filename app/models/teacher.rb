@@ -4,6 +4,8 @@ class Teacher < ApplicationRecord
 
     def average_rating
         ratings = self.reviews.map {|review| review.rating}
-        avgRating = ratings.sum / ratings.size
+        if ratings.sum > 0 
+            avgRating = ratings.sum / ratings.size
+        end
     end
 end

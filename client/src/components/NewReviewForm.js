@@ -18,7 +18,6 @@ function NewReviewForm ({ teachers }) {
 
         const newReview = {
             teacher_id: newTeacherId,
-            student_id: student_id,
             rating: newRating,
             comment: newComment
         }
@@ -31,6 +30,7 @@ function NewReviewForm ({ teachers }) {
             )
           })
           .then(res => {
+            // console.log(res)
             if(res.ok){
                 res.json().then((newReview) => {
                     handleSubmitReview(newReview)

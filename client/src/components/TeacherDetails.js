@@ -33,7 +33,7 @@ function TeacherDetails () {
             </div>
             <br/><br/><br/>
             <h2 className='dashboard-title'>Hear from other Students</h2>
-                    {teacher.id ? teacher.reviews.map(review => <Review review={review} onDeleteReview={handleDeleteReview} key={review.id}/>)  : null}
+                    {teacher.id ? teacher.reviews.map(review => <Review review={review} inTeacherDetails={true} onDeleteReview={handleDeleteReview} key={review.id}/>)  : null}
         </div>
     );
     } else {

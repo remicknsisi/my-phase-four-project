@@ -20,10 +20,8 @@ class StudentsController < ApplicationController
     #signup
     def create
         student = Student.create!(student_params)
-        if student.valid?
-            session[:user_id] = student.id
-            render json: student, status: :created
-        end
+        session[:user_id] = student.id
+        render json: student, status: :created
     end
 
     def update
